@@ -1,0 +1,23 @@
+.navigation {
+    padding: 2rem 4rem;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 4rem);
+    gap: 2rem;
+    align-items: center;
+    justify-content: end;
+
+    &-logo{
+        width: 32px;
+        height: 32px;
+        justify-self: start;
+        
+        img{
+            width: 100%;
+        }
+    }
+
+    a{
+        color: #333;
+    }
+}
