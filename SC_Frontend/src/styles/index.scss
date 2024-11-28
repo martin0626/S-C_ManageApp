@@ -13,9 +13,15 @@
     box-sizing: border-box;
 }
 
+p, a{
+  color: variables.$mianTextColor;
+}
+
+
+
 *:focus {
     outline: none;
-  }
+}
 
 li {
     list-style: none;
