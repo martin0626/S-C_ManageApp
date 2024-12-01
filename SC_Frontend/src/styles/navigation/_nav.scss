@@ -9,10 +9,11 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: variables.$mainShodwsLight;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
     font-weight: bold;
     position: relative;
+    letter-spacing: 1px;
     z-index: 999;
     transition: all 0.4s;
 
@@ -25,11 +26,9 @@
         align-items: center;
         transition: all 0.5s;
 
-        *:hover {
-            
+        @media screen and (max-width: variables.$breakpoint-small) {
+            grid-template-columns: repeat(1, 1fr);
         }
-
-        
 
         a{
             padding-inline: 1rem;
@@ -132,8 +131,100 @@
     display: flex;
     flex-direction: column;
     text-align: left;
+    background-color: #ffff;
+    font-size: 1rem;
+    font-weight: bold;
+
 
     a{
-        padding: 0.8rem;
+        // font-size: 1.3rem;
+        height: 2rem;
+        position: relative;
+
+        &::after{
+            content: "";
+            position: absolute;
+            width: 0%;
+            background-color: variables.$mianTextColorHov;
+            height: 1px;
+            left: 0;
+            bottom: 28%;
+            transform: translateX(0%);
+            transition: all 0.5s;
+        }
+
+        &:hover{
+            cursor: pointer;
+            color: variables.$mianTextColorHov;
+        }
+
+        &:hover::after{
+            width: 28%;
+        }
     }
+
+    @media screen and (max-width: variables.$breakpoint-small) {
+        width: 100%;
+        transform: translate(0%, 100%);
+        height: 100vh;
+        font-size: 1.3rem;
+        font-weight: bold;
+        gap: 1rem;
+
+
+        a::after{
+            bottom: 5%;
+        }
+
+        a:hover::after{
+            width: 20%;
+        }
+    }
+
+
+}
+
+
+.active-menu {
+    color: variables.$mianTextColorHov;
+
+    &::after{
+        content: "";
+        position: absolute;
+        width: 25% !important;
+        background-color: variables.$mianTextColorHov;
+        height: 2px;
+        left: 0;
+        bottom: 30%;
+        transform: translateX(0%);
+        transition: all 0.5s;
+        @media screen and (max-width: variables.$breakpoint-small){
+            width: 20% !important;
+            bottom: 5%;
+        }
+    }
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #33333331;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+
+.only-mobile{
+    display: none;
+
+    @media screen and (max-width: variables.$breakpoint-small) {
+        display: block;
+      }
+}
+
+.not-mobile {
+    display: block;
+
+    @media screen and (max-width: variables.$breakpoint-small) {
+        display: none;
+      }
 }

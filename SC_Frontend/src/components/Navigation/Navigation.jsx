@@ -21,7 +21,7 @@ export default function Navigation(){
                 <NavLink 
                     to='/'
                     className={({isActive}) =>
-                        isActive ? "active" : ""
+                        isActive ? "active not-mobile" : "not-mobile"
                 } 
                 >
                     Home
@@ -29,7 +29,7 @@ export default function Navigation(){
                 <NavLink 
                     to='stores'
                     className={({isActive}) =>
-                        isActive ? "active" : ""
+                        isActive ? "active not-mobile" : "not-mobile"
                 } 
                 >
                     Stores
@@ -39,17 +39,34 @@ export default function Navigation(){
             </div>
             <div className={`navigation-menu ${isOpenMenu ? 'navigation-open' : 'navigation-closed'}`}>
                 <NavLink 
-                    to='stores'
+                    to='storesss'
                     className={({isActive}) =>
-                        isActive ? "active-mob" : ""
+                        isActive ? "active-menu" : ""
                 } 
                 >
-                    Stores
+                    Login
+                </NavLink>
+                <NavLink 
+                    to='storesss'
+                    className={({isActive}) =>
+                        isActive ? "active-menu" : ""
+                } 
+                >
+                    Register
+                </NavLink>
+                <div className="separator"></div>
+                <NavLink 
+                    to='/'
+                    className={({isActive}) =>
+                        isActive ? "active-menu only-mobile" : "only-mobile"
+                } 
+                >
+                    Home
                 </NavLink>
                 <NavLink 
                     to='stores'
                     className={({isActive}) =>
-                        isActive ? "active-mob" : ""
+                        isActive ? "active-menu only-mobile" : "only-mobile"
                 } 
                 >
                     Stores
