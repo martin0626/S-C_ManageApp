@@ -1,0 +1,27 @@
+@use '../abstract/variables';
+
+.mainBtn {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    border: none;
+    background-color: variables.$actionColor;
+    color: variables.$mainColor;
+    width: fit-content;
+    transition: all 0.3s;
+    color: #fff;
+
+    &:hover{
+        cursor: pointer;
+        box-shadow: variables.$mainShodwsLight;
+        transform: scale(1.05);
+    }
+}
+
+
+.secondaryText {
+    color: #cfcfcf;
+    font-size: 0.9rem;
+}

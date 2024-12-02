@@ -1,5 +1,7 @@
+import Stores from "../components/Stores/Stores";
+
 export default function StoresPage(){
     return (
-        <h1>Work Stores</h1>
+        <Stores/>
     )
 }

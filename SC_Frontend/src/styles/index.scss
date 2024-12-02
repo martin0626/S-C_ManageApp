@@ -2,8 +2,19 @@
 @use 'abstract/variables';
 
 
+//Global
+@use 'global/global';
+
+
 //Navigation
 @use 'navigation/nav';
+
+
+//Stores
+@use 'stores/stores';
+@use 'stores/storesFilter';
+
+
 
 
 * {
@@ -13,7 +24,7 @@
     box-sizing: border-box;
 }
 
-p, a{
+a{
   color: variables.$mianTextColor;
 }
 
