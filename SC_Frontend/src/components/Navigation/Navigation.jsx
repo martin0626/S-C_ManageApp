@@ -39,7 +39,7 @@ export default function Navigation(){
             </div>
             <div className={`navigation-menu ${isOpenMenu ? 'navigation-open' : 'navigation-closed'}`}>
                 <NavLink 
-                    to='storesss'
+                    to='login'
                     className={({isActive}) =>
                         isActive ? "active-menu" : ""
                 } 
@@ -47,7 +47,7 @@ export default function Navigation(){
                     Login
                 </NavLink>
                 <NavLink 
-                    to='storesss'
+                    to='register'
                     className={({isActive}) =>
                         isActive ? "active-menu" : ""
                 } 
