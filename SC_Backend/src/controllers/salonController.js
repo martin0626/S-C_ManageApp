@@ -1,68 +1,83 @@
+const Salon = require('../models/salonModel')
+
+
+
 exports.getAllSalons = async (req, res, next)=>{
 
-    const salons = [
-        {name: "Salon 1", title: "Lorem dasdada asda a da sdasda asdgfdglk lkj ljiy gvyt!"},
-        {name: "Salon 2", title: "Lorem dasdada asda a da sdasda asdgfdglk lkj ljiy gvyt!"},
-        {name: "Salon 3", title: "Lorem dasdada asda a da sdasda asdgfdglk lkj ljiy gvyt!"},
-    
-    ]
+    const salons = await Salon.find()
 
 
     res.status(200).json({
         status: 'success',
         results: salons.length,
         data: {
-            salons
+            salons,
         }
     });
 }
 
 
 exports.getSingleSalon = async (req, res, next)=>{
+    try{
+        const id = req.params.id;
+        const result = await Salon.findById(id)
+        
 
-    const salons = [
-        {id: 1, name: "Salon 1", title: "Lorem dasdada asda a da sdasda asdgfdglk lkj ljiy gvyt!"},
-        {id: 2, name: "Salon 2", title: "Lorem dasdada asda a da sdasda asdgfdglk lkj ljiy gvyt!"},
-        {id: 3, name: "Salon 3", title: "Lorem dasdada asda a da sdasda asdgfdglk lkj ljiy gvyt!"},
-    
-    ]
-
-    const id = req.params.id;
-    const result = salons.find(e=> e.id === +id);
-    
-
-    res.status(200).json({
-        status: 'success',
-        results: salons.length,
-        data: {
-            result
-        }
-    });
+        res.status(200).json({
+            status: 'success',
+            data: {
+                result
+            }
+        });
+    }catch(err){
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
 }
 
 
 exports.createSalon = async (req, res, next)=>{
 
-    const newSalon = req.body; 
-    console.log(newSalon);
+    try{
+        const data = req.body; 
+        const newSalon = await Salon.create(data);
+        
     
-
-    res.status(200).json({
-        status: 'success',
-    });
+        res.status(200).json({
+            status: 'success',
+            salon: newSalon
+        });
+    }catch(err){
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
 }
 
 
 exports.updateSalon = async (req, res, next)=>{
 
-    const newSalon = req.body; 
-    const id = req.params.id
+    try{
+        const id = req.params.id;
+        const body = req.body;
+        const updatedSalon = await Salon.findByIdAndUpdate(id, body, {
+            new: true,
+            runValidators: true
+          });
+        
+        res.status(200).json({
+            status: 'success',
+            updatedSalon,
+        });
 
+    }catch(err){
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
 
-    console.log(newSalon, id);
-    
-
-    res.status(200).json({
-        status: 'success',
-    });
 }
