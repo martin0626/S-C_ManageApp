@@ -22,5 +22,5 @@
 /SC_Frontend/*.njsproj
 /SC_Frontend/*.sln
 /SC_Frontend/*.sw?
-/SC_Backend/.env
+/SC_Backend/src/config.env
 
