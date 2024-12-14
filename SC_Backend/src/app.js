@@ -20,6 +20,13 @@ app.use((req, res, next) => {
 //Routes
 app.use('/salons', salonRouter);
 
+//Handle Different Url Exceptions
+app.all('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'fail',
+    message: "Page Not Found"
+  })
+});
 
 
 
