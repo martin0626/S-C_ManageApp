@@ -6,7 +6,7 @@ const salonSchema = new mongoose.Schema(
     {
         name: {
             type: String,
-            require: [true, 'Name is required!'],
+            required: [true, 'Name is required!'],
             unique: true,
             trim: true,
             maxlength: [40, 'A tour name must have less or equal then 40 characters'],
@@ -19,7 +19,7 @@ const salonSchema = new mongoose.Schema(
         },
         description: {
             type: String,
-            require: [true, 'Salon must have description.'],
+            required: [true, 'Salon must have description.'],
         },
         services: {
             type: [String],
@@ -30,15 +30,33 @@ const salonSchema = new mongoose.Schema(
         },
         employees: {
             type: [String],
-            require: false,
+            required: false,
         },
         coverImg: {
             type: String,
-            require: [true, 'Cover Image is requred!'],
+            required: [true, 'Cover Image is requred!'],
         },
         gallery: {
             type: [String],
-            require: false,
+            required: false,
+        },
+        rating: {
+            type: Number,
+            default: 4.5,
+            min: [1, 'Rating must be above 1.0'],
+            max: [5, 'Rating must be below 5.0']
+        },
+        city: {
+            type: String,
+            required: [true, "Please specify city!"],
+        },
+        country: {
+            type: String,
+            required: [true, "Please specify country!"],
+        }, 
+        location: {
+            type: String,
+            default: '',
         }
     }
 )

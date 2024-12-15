@@ -1,11 +1,18 @@
-const Salon = require('../models/salonModel')
+const Salon = require('../models/salonModel');
+const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 
 
 exports.getAllSalons = catchAsync(async (req, res, next)=>{
 
-    const salons = await Salon.find()
+    const features = new APIFeatures(Salon.find(), req.query)
+    .searchByName()
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();    
 
+    const salons = await features.query;
 
     res.status(200).json({
         status: 'success',

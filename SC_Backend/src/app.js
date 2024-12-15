@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 
 const salonRouter  = require('./routes/salonRouters')
-
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
 
 
 //Middlewares
@@ -21,13 +22,13 @@ app.use((req, res, next) => {
 app.use('/salons', salonRouter);
 
 //Handle Different Url Exceptions
-app.all('*', (req, res, next) => {
-  res.status(404).json({
-    status: 'fail',
-    message: "Page Not Found"
-  })
+app.all('*', (req, res, next) => {  
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
+app.use(globalErrorHandler);
 
 
 module.exports = app;
+
+
