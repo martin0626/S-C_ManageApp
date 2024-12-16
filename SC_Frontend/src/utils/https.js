@@ -1,11 +1,6 @@
-export async function fetchSalons({ signal, searchTerm, paginate, sort, fields }) {
-    console.log(searchTerm);
-    let url = 'http://localhost:3000/salons';
-  
-    if (searchTerm) {
-        url += '?name=' + searchTerm;
-    }
-  
+
+
+const fetchData = async (url, signal)=>{
     try{
         const response = await fetch(url, { signal: signal });
 
@@ -22,4 +17,31 @@ export async function fetchSalons({ signal, searchTerm, paginate, sort, fields }
     }catch(err){
         return err
     }
+}
+
+
+export async function fetchSalons({ signal, searchedName }) {
+    console.log(searchedName);
+    let url = 'http://localhost:3000/salons';
+  
+    if (searchedName) {
+        url += '?name=' + searchedName;
+    }
+
+    const result = await fetchData(url, signal);
+    return result;
+};
+
+
+
+export async function fetchSingelSalon({ signal, slug }) {
+    let url = 'http://localhost:3000/salons?slug[eq]=' + slug;
+    
+    const result = await fetchData(url, signal);
+    return result[0];
+};
+
+
+export async function filterSalons({sigal}) {
+    
 }

@@ -2,12 +2,17 @@ import { useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaMapMarkerAlt, FaRegSun, FaFilter, FaSort } from "react-icons/fa";
 import { FaFilterCircleXmark } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
+import { salonActions } from "../../store/salons-slice";
 
 
 
 export default function FilterStores(){
     const [selectedInput, setSelectedInput] = useState(false);
+    const dispatch = useDispatch();
     const searchRef = useRef();
+    const filters = useSelector((state)=> state.salons.filters);
+
 
 
     const inputFocus = (e)=>{
@@ -20,7 +25,15 @@ export default function FilterStores(){
 
     const handleSearch = (e)=>{
         let inputData = searchRef?.current.value;
-        console.log(inputData);
+        dispatch(salonActions.setFilters({...filters, search: inputData}))
+        searchRef.current.value = '';
+        setSelectedInput(false);
+    };
+
+    const clearFilters = ()=>{
+        dispatch(salonActions.resetFilters());
+        searchRef.current.value = '';
+        setSelectedInput(false);
     }
 
     return (
@@ -43,7 +56,7 @@ export default function FilterStores(){
                             <FaSort/>
                             <p>Sort</p>
                         </div>
-                        <div className="single-filter">
+                        <div className="single-filter" onClick={clearFilters}>
                             <FaFilterCircleXmark/>
                             <p>Show All</p>
                         </div>

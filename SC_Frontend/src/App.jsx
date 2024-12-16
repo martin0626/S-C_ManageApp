@@ -4,6 +4,7 @@ import StoresPage from './pages/Stores'
 import RootPage from './pages/Root'
 import AuthPage from './pages/Auth' 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import StoreDetails from './pages/StoreDetails'
 
 
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         element: <StoresPage/>,
       },
       {
+        path: 'stores/:slug',
+        element: <StoreDetails/>,
+      },
+      {
         path: 'login',
         element: <AuthPage type={'login'}/>,
       },
@@ -32,15 +37,12 @@ const router = createBrowserRouter([
   }
 ])
 
-const queryClient = new QueryClient();
 
 
 function App() {
 
   return (
-    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router}></RouterProvider>
-    </QueryClientProvider>
   )
 }
 

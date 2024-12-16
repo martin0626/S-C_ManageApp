@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 export default function SingleStore({salon}){
     const [eyeVisible, setEyeVisible] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleEye = ()=>{
         setEyeVisible(!eyeVisible);
+    }
+
+    const handleDetailsSalon = (slug)=>{
+        navigate('/stores/' + slug);
+
     }
 
     return(
@@ -14,9 +22,9 @@ export default function SingleStore({salon}){
             <div className="store-desc">
                 <h2>{salon.name}</h2>
                 <p className="secondaryText">{salon.city}, {salon.country}</p>
-                <button className="mainBtn">Learn More</button>
+                <button onClick={()=>handleDetailsSalon(salon.slug)} className="mainBtn">Learn More</button>
             </div>
-            <div onMouseOver={handleEye} onMouseOut={handleEye} className="store-img-holder">
+            <div onMouseOver={handleEye} onMouseOut={handleEye} onClick={()=>handleDetailsSalon(salon.slug)} className="store-img-holder">
                 <img src={salon.coverImg} alt="" />
                 <FaEye className={`eye-icon ${!eyeVisible && 'eye-icon-hidden'}`}/>
             </div>
