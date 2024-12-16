@@ -3,7 +3,6 @@ import HomePage from './pages/Home'
 import StoresPage from './pages/Stores'
 import RootPage from './pages/Root'
 import AuthPage from './pages/Auth' 
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import StoreDetails from './pages/StoreDetails'
 
 
