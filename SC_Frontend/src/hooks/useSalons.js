@@ -2,13 +2,17 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchSalons } from '../utils/https';
 
 export const useSalons = (filters) => {
-    const  searchedName = filters.search;
     //TODO handle all filters...!
+    let queries = Object.keys(filters)
+        .filter(key=> filters[key] != '')
+        .map(key => `${key}=${filters[key]}`)
+        .join('&');
 
+
+        
      return useQuery({
-            queryKey: ['salons', {name: searchedName}],
-            queryFn: ({signal}) => fetchSalons({signal, searchedName}),
+            queryKey: ['salons', {name: queries}],
+            queryFn: ({signal}) => fetchSalons({signal, queries}),
     });
 
-    // const { data, isLoading, isError, error }
 };

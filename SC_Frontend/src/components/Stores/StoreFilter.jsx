@@ -4,6 +4,7 @@ import { FaMapMarkerAlt, FaRegSun, FaFilter, FaSort } from "react-icons/fa";
 import { FaFilterCircleXmark } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { salonActions } from "../../store/salons-slice";
+import { uiActions } from "../../store/ui-slice";
 
 
 
@@ -13,6 +14,10 @@ export default function FilterStores(){
     const searchRef = useRef();
     const filters = useSelector((state)=> state.salons.filters);
 
+
+    const handleSelectFilter = ()=>{
+        dispatch(uiActions.openMenu());
+    }
 
 
     const inputFocus = (e)=>{
@@ -44,15 +49,15 @@ export default function FilterStores(){
                     <h1>Filters</h1>
                 </div>
                 <div className="stores-filter-controller">
-                        <div className="single-filter activeFilter">
+                        <div onClick={handleSelectFilter} className="single-filter activeFilter">
                             <FaMapMarkerAlt/>
                             <p>City</p>
                         </div>
-                        <div className="single-filter">
+                        <div onClick={handleSelectFilter} className="single-filter">
                             <FaRegSun/>
                             <p>Service</p>
                         </div>
-                        <div className="single-filter">
+                        <div onClick={handleSelectFilter} className="single-filter">
                             <FaSort/>
                             <p>Sort</p>
                         </div>

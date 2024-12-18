@@ -1,32 +1,28 @@
 
 
+const SALONSURL = "http://localhost:3000/salons";
+
 const fetchData = async (url, signal)=>{
-    try{
-        const response = await fetch(url, { signal: signal });
+    
+    const response = await fetch(url, { signal: signal });
 
-        if (!response.ok) {
-            const error = new Error('An error occurred while fetching the events');
-            error.code = response.status;
-            error.info = await response.json();
-            throw error;
-        }
-
-        const { salons } = await response.json();
-
-        return salons;
-    }catch(err){
-        return err
+    if (!response.ok) {
+        const error = new Error('An error occurred while fetching the events');
+        error.code = response.status;
+        error.info = await response.json();
+        throw error;
     }
+
+    const { salons } = await response.json();
+    
+    return salons;
 }
 
 
-export async function fetchSalons({ signal, searchedName }) {
-    console.log(searchedName);
-    let url = 'http://localhost:3000/salons';
+export async function fetchSalons({ signal, queries }) {
+
+    let url = queries != '' ? SALONSURL + '?' + queries : SALONSURL;
   
-    if (searchedName) {
-        url += '?name=' + searchedName;
-    }
 
     const result = await fetchData(url, signal);
     return result;

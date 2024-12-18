@@ -6,16 +6,16 @@ class APIFeatures {
 
 
     searchByName(){
-        const { name } = this.queryString;
+        const { search } = this.queryString;
 
-        this.query = this.query.find({name: new RegExp(name, 'i')});
+        this.query = this.query.find({name: new RegExp(search, 'i')});
 
         return this;
     }
 
     filter(){
         const queryObj = { ...this.queryString };
-        const excludedFields = ['page', 'sort', 'limit', 'fields', 'name'];
+        const excludedFields = ['page', 'sort', 'limit', 'fields', 'search'];
         excludedFields.forEach(el => delete queryObj[el]);
 
         // 1B) Advanced filtering

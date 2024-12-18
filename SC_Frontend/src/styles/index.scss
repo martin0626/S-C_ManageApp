@@ -6,6 +6,14 @@
 @use 'global/global';
 
 
+//UI
+@use 'UI/loader';
+@use 'UI/errorBox';
+@use 'UI/rating';
+@use 'UI/popUp';
+
+
+
 //Navigation
 @use 'navigation/nav';
 
