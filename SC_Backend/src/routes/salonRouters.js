@@ -7,7 +7,7 @@ const router = express.Router();
 
 router
     .route('/')
-    .get(salonController.getAllSalons)
+    .get(salonController.cityFilterParser, salonController.getAllSalons)
     .post(salonController.createSalon)
 
 router

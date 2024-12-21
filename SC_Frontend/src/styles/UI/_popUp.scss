@@ -1,14 +1,18 @@
+@use '../abstract/variables';
+
+
 .popUp-menu{
     position: fixed;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: red;
+    background-color: #ffffff;
     min-width: 22rem;
     min-height: 16rem;
     z-index: 1111;
     border-radius: 8px; 
     padding: 2rem;
+    box-shadow: variables.$mainShodwsLight;
 
     &-close{
         position: absolute;

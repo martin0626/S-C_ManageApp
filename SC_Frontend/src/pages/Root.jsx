@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 
 export default function RootPage(){
 
-    const openedMenu = useSelector((state)=> state.ui.menuIsOpen);
-
-
+    const openedMenu = useSelector((state)=> state.ui.menuComponent);
 
     return (
         <>
@@ -16,9 +14,7 @@ export default function RootPage(){
                 openedMenu 
                 && 
                 <PopUpMenu>
-                    <div>
-                        <h1>Work</h1>
-                    </div>
+                    {openedMenu}
                 </PopUpMenu>
             }
             <section className="main-section">

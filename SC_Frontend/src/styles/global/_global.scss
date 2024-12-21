@@ -1,23 +1,46 @@
 @use '../abstract/variables';
 
-.mainBtn {
+
+@mixin mainBtnMixin($BackColor: variables.$actionColor, $TextColor: variables.$mainColor, $Shadow: variables.$mainShodwsLight) {
     padding: 0.8rem 1rem;
     font-size: 1rem;
     font-weight: bold;
     letter-spacing: 0.5px;
     border-radius: 6px;
     border: none;
-    background-color: variables.$actionColor;
-    color: variables.$mainColor;
+    background-color: $BackColor;
+    color: $TextColor;
     width: fit-content;
     transition: all 0.3s;
-    color: #fff;
 
     &:hover{
         cursor: pointer;
-        box-shadow: variables.$mainShodwsLight;
+        box-shadow: $Shadow;
         transform: scale(1.05);
     }
+}
+
+
+.mainBtn {
+    @include mainBtnMixin();
+}
+
+.mainBtnDark{
+    @include mainBtnMixin(variables.$mainColor, #fff, variables.$mainShodws);
+}
+
+.mainBtnWhite{
+    @include mainBtnMixin(#fff, variables.$mainColor, variables.$mainShodws);
+    border: variables.$borderSettings;
+}
+
+
+
+
+
+.secondaryText {
+    color: #cfcfcf;
+    font-size: 0.9rem;
 }
 
 

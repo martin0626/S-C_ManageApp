@@ -5,6 +5,32 @@ class APIFeatures {
     }
 
 
+    filterServices(){
+        const { services } = this.queryString;
+        
+        let servicesArr = services ? services.split(',') : [];
+
+        if(servicesArr.length > 0){
+            this.query = this.query.find({services: {$in: servicesArr}});
+        }
+        
+        
+        return this;
+    }
+
+
+    filterCities(){
+        const { city } = this.queryString;
+        
+        let cities = city ? city.split(',') : [];
+
+        if(cities.length > 0){
+            this.query = this.query.find({ city: { $in: cities }});
+        }
+        
+        return this;
+    }
+
     searchByName(){
         const { search } = this.queryString;
 
@@ -13,14 +39,17 @@ class APIFeatures {
         return this;
     }
 
+
     filter(){
         const queryObj = { ...this.queryString };
-        const excludedFields = ['page', 'sort', 'limit', 'fields', 'search'];
+        const excludedFields = ['page', 'sort', 'limit', 'fields', 'search', 'city', 'services'];
         excludedFields.forEach(el => delete queryObj[el]);
 
         // 1B) Advanced filtering
         let queryStr = JSON.stringify(queryObj);
+        
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt|eq)\b/g, match => `$${match}`);
+
 
         this.query = this.query.find(JSON.parse(queryStr));
         return this;

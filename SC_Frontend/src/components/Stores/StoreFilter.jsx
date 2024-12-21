@@ -5,6 +5,9 @@ import { FaFilterCircleXmark } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { salonActions } from "../../store/salons-slice";
 import { uiActions } from "../../store/ui-slice";
+import CityFilter from "./Filters/CityFilter";
+import ServiceFilter from "./Filters/ServicesFilter";
+import SortFilter from "./Filters/SortFilter";
 
 
 
@@ -13,10 +16,15 @@ export default function FilterStores(){
     const dispatch = useDispatch();
     const searchRef = useRef();
     const filters = useSelector((state)=> state.salons.filters);
+    const filterCompMapper = {
+        'city': <CityFilter/>,
+        'service': <ServiceFilter/>,
+        'sort': <SortFilter/>
+    }
 
 
-    const handleSelectFilter = ()=>{
-        dispatch(uiActions.openMenu());
+    const handleSelectFilter = (filterName)=>{
+        dispatch(uiActions.openMenu({comp: filterCompMapper[filterName]}));
     }
 
 
@@ -49,15 +57,15 @@ export default function FilterStores(){
                     <h1>Filters</h1>
                 </div>
                 <div className="stores-filter-controller">
-                        <div onClick={handleSelectFilter} className="single-filter activeFilter">
+                        <div onClick={()=>handleSelectFilter('city')} className="single-filter activeFilter">
                             <FaMapMarkerAlt/>
                             <p>City</p>
                         </div>
-                        <div onClick={handleSelectFilter} className="single-filter">
+                        <div onClick={()=>handleSelectFilter('service')} className="single-filter">
                             <FaRegSun/>
                             <p>Service</p>
                         </div>
-                        <div onClick={handleSelectFilter} className="single-filter">
+                        <div onClick={()=>handleSelectFilter('sort')} className="single-filter">
                             <FaSort/>
                             <p>Sort</p>
                         </div>

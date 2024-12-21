@@ -8,7 +8,6 @@ export const useSalons = (filters) => {
         .map(key => `${key}=${filters[key]}`)
         .join('&');
 
-
         
      return useQuery({
             queryKey: ['salons', {name: queries}],

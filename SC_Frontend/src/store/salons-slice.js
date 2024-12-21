@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 
-const initialFilters = {search: '', filter: '', sort: ''}
+const initialFilters = {search: '', filter: '', sort: '', city: [], services: []};
 
 const salonsSlice = createSlice({
     name: 'salons',

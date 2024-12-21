@@ -3,9 +3,16 @@ const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 
 
-exports.getAllSalons = catchAsync(async (req, res, next)=>{
+exports.cityFilterParser = catchAsync(async (req, res, next)=>{
+    // const city = req.query.city;
+    // console.log("Middleware Example");
+    next()
+})
 
+exports.getAllSalons = catchAsync(async (req, res, next)=>{
     const features = new APIFeatures(Salon.find(), req.query)
+    .filterServices()
+    .filterCities()
     .searchByName()
     .filter()
     .sort()
