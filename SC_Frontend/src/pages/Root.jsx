@@ -13,9 +13,7 @@ export default function RootPage(){
             {
                 openedMenu 
                 && 
-                <PopUpMenu>
-                    {openedMenu}
-                </PopUpMenu>
+                <PopUpMenu componentName={openedMenu} />
             }
             <section className="main-section">
                 <Outlet />

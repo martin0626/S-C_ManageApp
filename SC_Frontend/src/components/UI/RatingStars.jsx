@@ -10,19 +10,14 @@ export default function RateStars({rate}){
             {
                 starsArr.map(starNum=>{
                     if(starNum <= rate){
-                        return <FaStar className="colored"/>
+                        return <FaStar key={starNum} className="colored"/>
                     }else if((starNum - rate) < 0.9){
-                        return <FaStarHalfStroke className="colored"/>
+                        return <FaStarHalfStroke key={starNum} className="colored"/>
                     }else{
-                        return <FaStar/>
+                        return < FaStar key={starNum} />
                     }
                 })
             }
-            {/* <FaStar className="colored"/>
-            <FaStar/>
-            <FaStar/>
-            <FaStar/>
-            <FaStarHalfStroke className="colored"/> */}
         </div>
     )
 }

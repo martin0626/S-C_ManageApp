@@ -1,5 +1,10 @@
+import FilterSelection from "./FilterSelection";
+
 export default function ServiceFilter(){
+    const services = ['barber', 'nails'];
+    
+    
     return (
-        <h1>Services</h1>
+        <FilterSelection filterName={'services'} filterValues={services}/>
     )
 }

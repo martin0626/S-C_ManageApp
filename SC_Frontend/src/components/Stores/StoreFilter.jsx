@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { salonActions } from "../../store/salons-slice";
 import { uiActions } from "../../store/ui-slice";
 import CityFilter from "./Filters/CityFilter";
-import ServiceFilter from "./Filters/ServicesFilter";
-import SortFilter from "./Filters/SortFilter";
 
 
 
@@ -16,15 +14,11 @@ export default function FilterStores(){
     const dispatch = useDispatch();
     const searchRef = useRef();
     const filters = useSelector((state)=> state.salons.filters);
-    const filterCompMapper = {
-        'city': <CityFilter/>,
-        'service': <ServiceFilter/>,
-        'sort': <SortFilter/>
-    }
+    
 
 
     const handleSelectFilter = (filterName)=>{
-        dispatch(uiActions.openMenu({comp: filterCompMapper[filterName]}));
+        dispatch(uiActions.openMenu({comp: filterName}));
     }
 
 
@@ -57,15 +51,15 @@ export default function FilterStores(){
                     <h1>Filters</h1>
                 </div>
                 <div className="stores-filter-controller">
-                        <div onClick={()=>handleSelectFilter('city')} className="single-filter activeFilter">
+                        <div onClick={()=>handleSelectFilter('city')} className={`single-filter ${filters.city.length > 0 && 'activeFilter'}`}>
                             <FaMapMarkerAlt/>
                             <p>City</p>
                         </div>
-                        <div onClick={()=>handleSelectFilter('service')} className="single-filter">
+                        <div onClick={()=>handleSelectFilter('service')} className={`single-filter ${filters.services.length > 0 && 'activeFilter'}`}>
                             <FaRegSun/>
                             <p>Service</p>
                         </div>
-                        <div onClick={()=>handleSelectFilter('sort')} className="single-filter">
+                        <div onClick={()=>handleSelectFilter('sort')} className={`single-filter ${filters.sort && 'activeFilter'}`}>
                             <FaSort/>
                             <p>Sort</p>
                         </div>
