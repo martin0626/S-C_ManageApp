@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaMapMarkerAlt, FaRegSun, FaFilter, FaSort } from "react-icons/fa";
-import { FaFilterCircleXmark } from "react-icons/fa6";
+import { FaFilterCircleXmark, FaRegCircleXmark } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { salonActions } from "../../store/salons-slice";
 import { uiActions } from "../../store/ui-slice";
-import CityFilter from "./Filters/CityFilter";
 
 
 
@@ -33,9 +32,13 @@ export default function FilterStores(){
     const handleSearch = (e)=>{
         let inputData = searchRef?.current.value;
         dispatch(salonActions.setFilters({...filters, search: inputData}))
+    };
+
+    const removeSearchFilter = ()=>{
         searchRef.current.value = '';
         setSelectedInput(false);
-    };
+        dispatch(salonActions.setFilters({...filters, search: ''}))
+    } 
 
     const clearFilters = ()=>{
         dispatch(salonActions.resetFilters());
@@ -71,6 +74,13 @@ export default function FilterStores(){
             </div>
             <div className="stores-filter-search">
                 <input ref={searchRef} onFocus={inputFocus} onBlur={inputFocus} type="text" placeholder="Search..."/>
+                {
+                    filters.search != '' 
+                        && 
+                    <div onClick={removeSearchFilter} className={`search-clear`}>
+                        <FaRegCircleXmark/>
+                    </div>
+                }
                 <div onClick={handleSearch} className={`search-details ${selectedInput ? 'input-active' : 'input-inactive'}`}>
                     <FaSearch/>
                 </div>

@@ -7,7 +7,6 @@
 .stores-filter{
     width: 100%;
     padding: 2rem 2rem;
-    min-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,13 +70,34 @@
                 height: 1.4rem;
             }
         }
+
+        .search-clear {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-45%);
+            color: #333;
+            transition: all 0.5s;
+
+            svg{
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+
+            &:hover{
+                cursor: pointer;
+                color: #33333349;
+            }
+        }
     }
+
+    
 }
 
 
 .input-active{
     top: 50%;
-    right: -30%;
+    right: -25%;
     transform: translateY(-50%);
     color: #333;
     transition: all 0.5s;

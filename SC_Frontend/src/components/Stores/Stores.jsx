@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
 import AllStores from "./AllStores";
 import FilterStores from "./StoreFilter";
-import { useQuery } from '@tanstack/react-query';
-import { fetchSalons } from "../../utils/https";
 import { useSelector } from "react-redux";
 import { useSalons } from "../../hooks/useSalons";
 import LoadingComp from "../UI/Loading";
 import ErrorBox from "../UI/ErrorBox";
-import PopUpMenu from "../UI/PopUpMenu";
+import { FaSearch } from "react-icons/fa";
+
 
 
 export default function Stores(){

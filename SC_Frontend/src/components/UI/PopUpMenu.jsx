@@ -15,9 +15,13 @@ export default function PopUpMenu({componentName}){
 
     const dispatch = useDispatch()
 
+
     const handleClose = ()=>{
         dispatch(uiActions.closeMenu());
-    }
+    };
+
+    
+
 
     return (
         <>

@@ -7,6 +7,7 @@ const uiSlice = createSlice({
     initialState: { 
         menuIsOpen: false,
         menuComponent: undefined,
+        isLoading: false,
     },
     reducers: {
         openMenu(state, action){
@@ -16,7 +17,12 @@ const uiSlice = createSlice({
         closeMenu(state){
             state.menuIsOpen = false;
             state.menuComponent = undefined;
-
+        },
+        setIsLoading(state){
+            state.isLoading = true;
+        },
+        clearIsLoading(state){
+            state.isLoading = false;
         }
     }
 })
