@@ -11,7 +11,7 @@ export default function RateStars({rate}){
                 starsArr.map(starNum=>{
                     if(starNum <= rate){
                         return <FaStar key={starNum} className="colored"/>
-                    }else if((starNum - rate) < 0.9){
+                    }else if((starNum - rate) < 0.6){
                         return <FaStarHalfStroke key={starNum} className="colored"/>
                     }else{
                         return < FaStar key={starNum} />

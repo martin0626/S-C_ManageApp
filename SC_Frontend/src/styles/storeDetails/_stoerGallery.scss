@@ -1,57 +1,58 @@
-// .gallery {
-//     height: 425px;
-//     margin-top: 2rem;
-// }
+.gallery {
+    // height: 425px;
+    margin-top: 2rem;
+}
 
 
-// .slider {
-//     height: inherit;
-//     display: flex;
-//     gap: 0.2rem;
-//     align-items: center;
-//     overflow-x: auto;
-//     overflow-y: hidden;
-//     padding-inline: 0.2rem;
-
-//     &-img-container{
-//         cursor: grab;
-
-//         img{
-//             height: 425px;
-//             user-select: none;
-//             pointer-events: none;
-
-//         }
-//     }
-// }
-
-
-/* App.css */
-.slider-container {
+.slider {
+    height: inherit;
     display: flex;
+    gap: 4px;
+    align-items: center;
     overflow-x: scroll;
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Hides scrollbar in Firefox */
-    padding-inline: 1rem;
-  }
-  
-  .slider-container::-webkit-scrollbar {
-    display: none; /* Hides scrollbar in Chrome and Safari */
-  }
-  
-  .slider {
-    display: flex;
-    gap: 10px;
+    overflow-y: hidden;
+    padding-inline: 10px;
+    user-select: none !important;
     cursor: grab;
-  }
-  
-  .slider img {
-    height: 453px;
-    border-radius: 10px;
-    user-select: none; /* Prevents text selection during dragging */
-    pointer-events: none;
-  }
-  
-  .slider:active {
-    cursor: grabbing;
-  }
+    scroll-behavior: smooth;
+
+    @media screen and (max-width: 600px) {
+      height: 18rem;
+    scroll-behavior:auto;
+
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &-img{
+      img{
+        height: 28rem;
+        user-select: none !important;
+        pointer-events: none !important;
+
+
+        &:hover{
+          transform: scale(1.1);
+        }
+
+
+        @media screen and (max-width: 1400px) {
+          height: 20rem;
+        }
+        
+        @media screen and (max-width: 1200px) {
+          height: 16rem;
+        }
+
+        @media screen and (max-width: 600px) {
+          height: 18rem;
+        }
+      }
+    }
+
+    
+}
+
+
