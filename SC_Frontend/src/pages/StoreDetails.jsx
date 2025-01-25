@@ -5,7 +5,7 @@ import Details from "../components/StoreDetails/Details";
 
 export default function StoreDetails(){
 
-    const {slug} = useParams();
+    const { slug } = useParams();
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['salons', {slug: slug}],
         queryFn: ({signal}) => fetchSingelSalon({signal, slug}),

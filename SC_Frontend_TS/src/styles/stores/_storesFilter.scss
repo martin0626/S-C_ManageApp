@@ -1,0 +1,129 @@
+@use '../abstract/variables';
+
+
+
+
+
+.stores-filter{
+    width: 100%;
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+    .stores-filter-header {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        gap: 0.4rem;
+        transition: all 0.3s;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    &-controller{
+        // width: 80%;
+        height: 4rem;
+        padding: 2rem;
+        border: variables.$borderSettings;
+        border-radius: 999px;
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        justify-content: center;
+
+        .single-filter{
+            display: flex;
+            gap: 0.4rem;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+
+            &:hover{
+                cursor: pointer;
+                color:variables.$actionColor;
+                transform: scale(1.1);
+            }
+        }
+
+    }
+
+
+    &-search{
+        position: relative;
+
+        input{
+            padding: 1rem 1rem;
+            border-radius: 999px;
+            border: variables.$borderSettings;
+            background: none;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .search-details{
+            position: absolute;
+            display: flex;
+            
+            svg{
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+        }
+
+        .search-clear {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-45%);
+            color: #333;
+            transition: all 0.5s;
+
+            svg{
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+
+            &:hover{
+                cursor: pointer;
+                color: #33333349;
+            }
+        }
+    }
+
+    
+}
+
+.input-active{
+    top: 50%;
+    right: -25%;
+    transform: translateY(-50%);
+    color: #333;
+    transition: all 0.5s;
+    border-radius: 999px;
+    border: variables.$borderSettings;
+    padding: 0.8rem;
+
+    &:hover{
+        cursor: pointer;
+        background-color: variables.$actionColor;
+        color: #fff;
+        border: 1px solid #fff;
+
+    }
+
+}
+
+.input-inactive {
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    color: #33333349;
+    transition: all 0.5s;
+
+}
+
+
+.activeFilter {
+    color: variables.$actionColor !important;
+}

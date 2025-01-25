@@ -1,0 +1,230 @@
+@use '../abstract/variables';
+
+
+
+.navigation {
+    padding: 2rem 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: variables.$mainShodwsLight;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    letter-spacing: 1px;
+    z-index: 999;
+    transition: all 0.4s;
+
+
+    &-links{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem;
+        justify-items: center;
+        align-items: center;
+        transition: all 0.5s;
+
+        @media screen and (max-width: variables.$breakpoint-small) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        a{
+            padding-inline: 1rem;
+            position: relative;
+            transition: all 0.4s;
+            
+            &::after{
+                content: "";
+                position: absolute;
+                // width: 80%;
+                width: 0%;
+                background-color: variables.$mianTextColorHov;
+                height: 2px;
+                left: 0;
+                bottom: -12%;
+                transform: translateX(12%);
+                transition: all 0.5s;
+            }
+
+            &:hover{
+                cursor: pointer;
+                color: variables.$mianTextColorHov;
+            }
+
+            &:hover::after{
+                width: 80%;
+            }
+
+        }
+
+        svg{
+            font-size: 1.4rem;
+            transition: all 0.4s;
+            &:hover{
+                cursor: pointer;
+                color: variables.$mianTextColorHov !important;
+            }
+        }
+    }
+
+    &-logo{
+        width: 4rem;
+        height: 4rem;
+        justify-self: start;
+        transition: all 0.6s;
+        
+        img{
+            width: 100%;
+        }
+
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+
+    &-open {
+        height: 24rem;
+        padding: 2rem;
+        opacity: 1 !important;
+    }
+
+    &-closed{
+        height: 0rem !important;
+    }
+
+}
+
+
+
+
+
+.active {
+    color: variables.$mianTextColorHov;
+    &::after{
+        content: "";
+        position: absolute;
+        width: 80% !important;
+        background-color: variables.$mianTextColorHov;
+        height: 2px;
+        left: 0;
+        bottom: -12%;
+        transform: translateX(12%);
+        transition: all 0.4s;
+    }
+}
+
+
+
+.navigation-menu{
+    position: absolute;
+    z-index: 998;
+    width: 22rem;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    box-shadow: variables.$mainShodwsLight;
+    border-radius: 0px 0px 8px 8px;
+    transition: all 0.4s;
+    transform: translate(-5%, 100%);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    background-color: #ffff;
+    font-size: 1rem;
+    font-weight: bold;
+
+
+    a{
+        // font-size: 1.3rem;
+        height: 2rem;
+        position: relative;
+
+        &::after{
+            content: "";
+            position: absolute;
+            width: 0%;
+            background-color: variables.$mianTextColorHov;
+            height: 1px;
+            left: 0;
+            bottom: 28%;
+            transform: translateX(0%);
+            transition: all 0.5s;
+        }
+
+        &:hover{
+            cursor: pointer;
+            color: variables.$mianTextColorHov;
+        }
+
+        &:hover::after{
+            width: 28%;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        width: 100%;
+        transform: translate(0%, 100%);
+        height: 100vh;
+        font-size: 1.3rem;
+        font-weight: bold;
+        gap: 1rem;
+
+
+        a::after{
+            bottom: 5%;
+        }
+
+        a:hover::after{
+            width: 20%;
+        }
+    }
+
+
+}
+
+
+.active-menu {
+    color: variables.$mianTextColorHov;
+
+    &::after{
+        content: "";
+        position: absolute;
+        width: 25% !important;
+        background-color: variables.$mianTextColorHov;
+        height: 2px;
+        left: 0;
+        bottom: 30%;
+        transform: translateX(0%);
+        transition: all 0.5s;
+        @media screen and (max-width: variables.$breakpoint-small){
+            width: 20% !important;
+            bottom: 5%;
+        }
+    }
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #33333331;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+
+.only-mobile{
+    display: none;
+
+    @media screen and (max-width: 700px) {
+        display: block;
+      }
+}
+
+.not-mobile {
+    display: block;
+
+    @media screen and (max-width: 700px) {
+        display: none;
+      }
+}

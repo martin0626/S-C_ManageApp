@@ -1,0 +1,110 @@
+//Abstract
+@use 'abstract/variables';
+
+
+//Global
+@use 'global/global';
+
+
+//UI
+@use 'UI/loader';
+@use 'UI/errorBox';
+@use 'UI/rating';
+@use 'UI/popUp';
+
+
+
+//Navigation
+@use 'navigation/nav';
+
+
+//Stores
+@use 'stores/stores';
+@use 'stores/storesFilter';
+@use 'stores/selectionFilter';
+@use 'stores/sortFilter';
+
+
+//Stores Details
+@use 'storeDetails/storeDetails';
+
+
+
+* {
+    font-family: "eurostile", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a{
+  color: variables.$mianTextColor;
+}
+
+
+
+*:focus {
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+    @media screen and (max-width: variables.$breakpoint-medium) {
+      font-size: 80%;
+    }
+
+    @media screen and (max-width: variables.$breakpoint-small) {
+      font-size: 70%;
+    }
+}
+
+body{
+  font-family: "europa", sans-serif;
+//   background-color: variables.$background-color;
+  position: relative;
+}
+
+
+
+a {
+  text-decoration: none;
+//   color: variables.$textColor;
+}
+
+p, h1, h2, h3{
+  color: variables.$mianTextColor;
+}
+
+
+//ScrollBar
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  transition: all 0.3s;
+  // border-radius: 6px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+//   background: variables.$mainColor; 
+  transition: all 0.3s;
+  // border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  cursor: pointer;
+}
