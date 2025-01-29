@@ -1,7 +1,8 @@
+import { TSingleStore } from "../../pages/Stores";
 import SingleStore from "./SingleStore";
 
 
-export default function AllStores({salons}){
+export default function AllStores({salons}: {salons: TSingleStore []}){
     
     
     return (

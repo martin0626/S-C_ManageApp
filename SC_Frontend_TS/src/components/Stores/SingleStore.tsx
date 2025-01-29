@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import RateStars from "../UI/RatingStars";
+import { type TSingleStore } from "../../pages/Stores";
 
 
-export default function SingleStore({salon}){
+export default function SingleStore({salon}: {salon: TSingleStore}){
     const [eyeVisible, setEyeVisible] = useState(false);
 
     const navigate = useNavigate();
@@ -13,9 +14,8 @@ export default function SingleStore({salon}){
         setEyeVisible(!eyeVisible);
     }
 
-    const handleDetailsSalon = (slug)=>{
+    const handleDetailsSalon = (slug: string)=>{
         navigate('/stores/' + slug);
-
     }
 
     return(

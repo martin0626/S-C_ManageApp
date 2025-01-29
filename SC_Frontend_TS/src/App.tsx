@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router"
 import RootPage from "./pages/Root"
 import HomePage from "./pages/Home"
 import StoresPage from "./pages/Stores"
+import StoreDetails from "./pages/StoreDetails"
 
 
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter([{
     {
       path: 'stores',
       element: <StoresPage/> 
+    },
+    {
+      path: 'stores/:slug',
+      element: <StoreDetails/>
     }
   ]
 }])
@@ -23,7 +28,7 @@ const router = createBrowserRouter([{
 
 function App() {
   return (
-    <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
   )
 }
 

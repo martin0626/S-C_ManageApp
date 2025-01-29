@@ -1,17 +1,16 @@
-import { FocusEvent, MouseEventHandler, useRef, useState } from "react";
+import { type FocusEvent, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaMapMarkerAlt, FaRegSun, FaFilter, FaSort } from "react-icons/fa";
 import { FaFilterCircleXmark, FaRegCircleXmark } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
 import { salonActions } from "../../store/salons-slice";
 import { uiActions } from "../../store/ui-slice";
-import { useAppSelector } from "../../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 
 
 
 export default function FilterStores(){
     const [selectedInput, setSelectedInput] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const searchRef = useRef<HTMLInputElement>(null);
     const filters = useAppSelector((state)=> state.salons.filters);
     
