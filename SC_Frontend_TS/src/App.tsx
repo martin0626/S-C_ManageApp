@@ -20,7 +20,7 @@ const router = createBrowserRouter([{
     },
     {
       path: 'stores/:slug',
-      element: <StoreDetails/>
+      element: <StoreDetails/>  
     }
   ]
 }])

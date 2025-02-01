@@ -223,13 +223,14 @@
 
 
 .selected-service{
+    display: flex;
+    flex-direction: column;
 
     @media screen and (max-width: 980px) {
         display: none;
     }
 
-    display: flex;
-    flex-direction: column;
+    
 
     &-single {
         display: grid;
