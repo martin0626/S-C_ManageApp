@@ -1,6 +1,7 @@
 @use './stoerGallery';
 @use './storeServices';
 @use './storeLocation';
+@use './storeDescription';
 
 .storeDetails {
     display: flex;

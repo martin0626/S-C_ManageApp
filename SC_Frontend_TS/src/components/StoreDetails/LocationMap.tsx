@@ -15,11 +15,16 @@ export default function LocationMap({location, name, country, city}: LocatiomPro
     return (
         <section className="locationDetails">
             <header className="locationDetails-header">
-                <h1><FaMapMarkerAlt/> Address</h1>
-                <div id="location-desc">
-                    <p>{name}</p>
-                    <p>Sofia, Mladost 4, bl.Aleksandar Malinov</p>
-                    <p>{city}, {country}</p>
+                <div className="locationDetails-header-detail"></div>
+
+                <div className="location-desc">
+                    <h1><FaMapMarkerAlt/> Address</h1>
+
+                    <div className="location-desc-text">
+                        <p>{name}</p>
+                        <p>Sofia, Mladost 4, bl.Aleksandar Malinov</p>
+                        <p>{city}, {country}</p>
+                    </div>
                 </div>
             </header>
             <MapComponent location={[42.62862607082877, 23.3837770628687]} height={380}/>

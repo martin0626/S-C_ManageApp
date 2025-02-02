@@ -6,31 +6,79 @@
     grid-template-columns: 1fr 2fr;
     // padding: 0rem 0rem 0rem 1rem;
     background-color: variables.$mainColor;
+    overflow: hidden;
+
+    @media screen and (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
     
     &-header{
 
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: start;
-        gap: 2rem;
-        width: 50%;
+        align-items: end;
+        // gap: 1rem;
+        width: 100%;
         justify-self: end;
         color: #fff;
+        position: relative;
+        padding: 1rem;
 
-        #location-desc {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            font-size: 1.1rem;
+
+        @media screen and (max-width: 900px) {
+            align-items: start;
+            align-items: center;
+        }
+        
+
+        &-detail {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            transform: translate(-5rem, 72%) rotate(30deg);
+            height: 180px; /* control the size */
+            aspect-ratio: 1.8;
+            --g: radial-gradient(50% 50%, #000 98%, #0000) no-repeat;
+            mask: var(--g) 100% 100%/30% 60%,var(--g) 70% 0/50% 100%,var(--g) 0 100%/36% 68%,var(--g) 27% 18%/26% 40%,linear-gradient(#000 0 0) bottom/67% 58% no-repeat;
+            background: #494949;
+
+            
+            @media screen and (max-width: 1500px) {
+                transform: translate(-5rem, 80%) rotate(30deg);
+            }
+
+            @media screen and (max-width: 900px) {
+                transform: translate(-5rem, 50%) rotate(50deg);
+            }
         }
 
-        h1,p{
+        .location-desc {
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            font-size: 1rem;
+
+            &-text {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding-left: 1.5rem;
+                
+            }
+        }
+
+        h1{
             color: #fff;
+        }
+        p{
+            color: variables.$secondaryColor;
         }
 
         h1{
             font-size: 1.6rem;
+            z-index: 2;
         }
     }
     

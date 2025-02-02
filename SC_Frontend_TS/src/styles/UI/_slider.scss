@@ -1,0 +1,116 @@
+@use '../abstract/variables';
+
+
+.uiSlider {
+    position: relative;
+    color: #fff;
+    background-color: #333;
+
+    h2{
+        padding: 1rem;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+
+.uiSlider-container{
+    display:flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    transition: all 0.5s;
+    scroll-behavior: smooth;
+    width: 100%;
+    background-color: variables.$mainColor;
+    p, h2 {
+        color: #fff;
+    }
+    
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+.slide-card{
+    min-width: 100%;
+    height: 22rem;
+    padding: 2rem 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.slider-leftArr, .slider-rightArr {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    transition: all 0.3s;
+
+    &:hover{
+        cursor: pointer;
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+}
+
+.slider-leftArr{
+    left: 1%;
+}
+
+.slider-rightArr{
+    right: 1%;
+}
+
+
+
+
+.card-content {
+    
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+
+    &-profile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-direction: column;
+
+        &-img{
+            width: 10rem;
+            height: 10rem;
+            overflow: hidden;
+            border-radius: 50%;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &-text{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        // background-color: #ffffff3a;
+        color: #fff;
+        max-width: 32rem;
+        padding: 1rem;
+        border-radius: 12px;
+
+        p{
+            color: #ffffffa8;
+            font-size: 0.9rem;
+            line-height: 1.2rem;
+        }
+    }
+
+}
