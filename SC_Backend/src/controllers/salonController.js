@@ -59,7 +59,7 @@ exports.updateSalon = catchAsync(async (req, res, next)=>{
         const updatedSalon = await Salon.findByIdAndUpdate(id, body, {
             new: true,
             runValidators: true
-          });
+        });
         
         res.status(200).json({
             status: 'success',

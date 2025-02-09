@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 
-const salonRouter  = require('./routes/salonRouters')
+
+
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const cors = require('cors')
@@ -10,9 +12,7 @@ const cors = require('cors')
 //Middlewares
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
-
 app.use(cors());
-
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
@@ -21,8 +21,17 @@ app.use((req, res, next) => {
 
 
 
+//Routers Imports
+const salonRouter  = require('./routes/salonRouters')
+const servicesRouter = require('./routes/servicesRouter')
+
+
 //Routes
 app.use('/salons', salonRouter);
+app.use('/services', servicesRouter);
+
+
+
 
 //Handle Different Url Exceptions
 app.all('*', (req, res, next) => {  
