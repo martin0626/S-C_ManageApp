@@ -58,7 +58,7 @@ export default function FilterStores(){
                             <FaMapMarkerAlt/>
                             <p>City</p>
                         </div>
-                        <div onClick={()=>handleSelectFilter('service')} className={`single-filter ${filters.services.length > 0 && 'activeFilter'}`}>
+                        <div onClick={()=>handleSelectFilter('service')} className={`single-filter ${filters.servicesFilter.length > 0 && 'activeFilter'}`}>
                             <FaRegSun/>
                             <p>Service</p>
                         </div>

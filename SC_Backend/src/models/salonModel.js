@@ -21,7 +21,7 @@ const salonSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Salon must have description.'],
         },
-        services: {
+        servicesFilter: {
             type: [String],
             enum: {
                 values: ['barber', 'nails', 'hairdressing',],
@@ -57,6 +57,20 @@ const salonSchema = new mongoose.Schema(
         location: {
             type: String,
             default: '',
+        },
+        services: {
+            type: [
+                {
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'Service',
+                }
+            ],
+            validate: {
+                validator: function(value) {
+                    return Array.isArray(value) && value.length > 0;
+                },
+                message: 'Must have at least one service!'
+            }
         }
     }
 )
@@ -65,6 +79,15 @@ const salonSchema = new mongoose.Schema(
 salonSchema.pre('save', function(next){
     this.slug = slugify(this.name, {lower: true});
     next();
+})
+
+salonSchema.pre(/^find/, function(next){
+
+    this.populate({
+        path: 'services',
+    })
+
+    next()
 })
 
 

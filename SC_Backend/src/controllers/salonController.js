@@ -31,7 +31,7 @@ exports.getAllSalons = catchAsync(async (req, res, next)=>{
 
 exports.getSingleSalon = catchAsync(async (req, res, next)=>{
         const id = req.params.id;
-        const result = await Salon.findById(id)
+        const result = await Salon.findById(id);
         
 
         res.status(200).json({

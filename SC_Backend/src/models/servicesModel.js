@@ -23,21 +23,22 @@ const servicesSchema = new mongoose.Schema({
         maxlength: [100, 'A tour name must have less or equal then 100 characters'],
         minlength: [3, 'A tour name must have more or equal then 3 characters']
     },
-    price: {
-        type: Number,
-        require: true,
-        min: [0.11, 'Too small price!'],
-        max: 10000.00,
-    },
-    gallery: {
-        type: [String],
-        require: false,
-    },
-    reviews: {
-        type: [String],
-        require: false,
+    subSurvices: {
+        type: [
+            {
+                type: mongoose.Schema.ObjectId,
+                ref: 'SubService'
+            }
+        ],
+        validate: {
+            validator: function(value) {
+                return Array.isArray(value) && value.length > 0;
+            },
+            message: 'Must have at least one sub service!'
+        }
     }
 })
+
 
 
 const Service = mongoose.model('Service', servicesSchema);

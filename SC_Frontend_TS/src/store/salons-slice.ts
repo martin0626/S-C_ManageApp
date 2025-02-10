@@ -5,11 +5,11 @@ export type SalonsSliceStateT = {
     filter: string,
     sort: string,
     city: string [],
-    services: string [],
+    servicesFilter: string [],
 }
 
 
-const initialFilters: SalonsSliceStateT = {search: "", filter: "", sort: "", city: [], services: []};
+const initialFilters: SalonsSliceStateT = {search: "", filter: "", sort: "", city: [], servicesFilter: []};
 
 const salonsSlice = createSlice({
     name: 'salons',

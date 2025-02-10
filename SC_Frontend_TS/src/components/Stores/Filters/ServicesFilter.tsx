@@ -5,6 +5,6 @@ export default function ServiceFilter(){
     
     
     return (
-        <FilterSelection filterName={'services'} filterValues={services}/>
+        <FilterSelection filterName={'servicesFilter'} filterValues={services}/>
     )
 }

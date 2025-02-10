@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 
 
 type SelectionFilterProps = {
-    filterName: 'city' | 'services';
+    filterName: 'city' | 'servicesFilter';
     filterValues: string [];
 }
 

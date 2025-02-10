@@ -2,10 +2,11 @@ import { useState } from "react";
 import RateStars from "../../UI/RatingStars";
 import { FaScissors, FaPaintbrush } from "react-icons/fa6";
 import ServicesList from "./SingleService";
+import { SingleServiceT } from "../../../pages/Stores";
 
 
 type ServicesProps = {
-    services: ('barber' | 'nails') []; 
+    services: SingleServiceT []; 
     city: string; 
     name: string; 
     address: string; 
@@ -13,12 +14,14 @@ type ServicesProps = {
 }
 
 export default function Services({services, city, name, address, rating}: ServicesProps){
-    const [selectedService, setSelectedService] = useState(services[0]);
-
+    const [selectedService, setSelectedService] = useState<SingleServiceT>(services[0]);
 
     const iconsMapper = {
-        'barber': <FaScissors/>,
+        'hair': <FaScissors/>,
         'nails': <FaPaintbrush/>,
+        'face': <FaPaintbrush/>,
+        'body': <FaPaintbrush/>,
+
     }
 
     return (
@@ -39,9 +42,9 @@ export default function Services({services, city, name, address, rating}: Servic
                     {services.map(s => 
                         <div className="sinlge-service-icon">
                             <p className="icon-service">
-                                {iconsMapper[s]}
+                                {iconsMapper[s.category]}
                             </p>
-                            <a style={{textTransform: "capitalize"}}>{s}</a>
+                            <a style={{textTransform: "capitalize"}}>{s.category}</a>
                         </div>
                     )}
                 </div>
