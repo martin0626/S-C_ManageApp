@@ -20,13 +20,21 @@ const subSurviceSchema = new mongoose.Schema({
         require: false,
     },
     options: {
-        type: [String]
+        type: [String],
+        require: false
+
     },
     services: {
         type: [{
             type: mongoose.Schema.ObjectId,
             ref: 'Service'
         }]
+    },
+    time: {
+        type: Number,
+        min: [1, 'At least 1 minute!'],
+        max: [1000, 'Maximum time 1000 minutes!'],
+        require: false
     }
 })
 

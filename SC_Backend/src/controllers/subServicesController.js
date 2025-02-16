@@ -1,21 +1,18 @@
 const SubService = require("../models/subServicesModel");
 const catchAsync = require("../utils/catchAsync");
+const handlerFactory = require("./handlerFactory")
 
 //TODO Finish sub services API
 
 
 
-exports.getAllSubServices = catchAsync( async (req, res, next)=>{
+exports.getAllSubServices = handlerFactory.getAll(SubService);
 
-    const { serviceId } = req.params;
+exports.getSingleSubService = handlerFactory.getOne(SubService);
 
-    console.log(serviceId);
-    
-    // let result = await SubService.find()
+exports.deleteSubService = handlerFactory.deleteOne(SubService);
 
-    res.status(200).json({
-        data: 'work'
-    })
-});
+exports.createSubService = handlerFactory.createOne(SubService);
 
+exports.updateSubService = handlerFactory.updateOne(SubService);
 

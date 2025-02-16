@@ -14,6 +14,7 @@ router
     .route('/:id')
     .get(salonController.getSingleSalon)
     .patch(salonController.updateSalon)
+    .delete(salonController.delteSalon)
 
 
 
