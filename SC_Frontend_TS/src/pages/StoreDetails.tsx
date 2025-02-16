@@ -13,13 +13,11 @@ export default function StoreDetails(){
         queryFn: ({signal}) => slug ? fetchSingelSalon({ signal, slug }) : Promise.reject("Slug is undefined"),
     })
 
-    debugger
 
     if(!data && !isLoading){
         navigate('/stores')
     }
-
-
+    
     return (
         <section>
         {

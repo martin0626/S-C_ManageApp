@@ -1,15 +1,28 @@
 import Stores from "../components/Stores/Stores";
 
+
+
+export type SubServiceT = {
+    _id: string,
+    name: string,
+    price: number,
+    geallery: string [],
+    reviews: string [],
+    options: string [],
+    time: number
+}
+
+
 export type SingleServiceT = {
     category: 'hair' | 'face' | 'body' | 'nails',
     gallery: string [],
     name: string,
     price: number,
     reviews: string [],
+    subServices: SubServiceT[],
     type: string,
     _id: string
 }
-
 
 
 export type TSingleStore = {

@@ -10,19 +10,4 @@ exports.updateService = handlerFactory.updateOne(Services);
 
 exports.getSingleService = handlerFactory.getOne(Services);
 
-// catchAsync( async(req, res, next)=>{
-//     let { id } = req.params;
-//     let data = req.body;
-
-//     let result = await Services.findByIdAndUpdate(id, data, {
-//         new: true,
-//         runValidators: true
-//     });
-
-    
-//     res.status(200).json({
-//         status: "Success!",
-//         data: result
-//     })
-// })
-
+// exports.getSingleService = handlerFactory.getOne(Services, [{ path: 'subServices', select: '-__v' }]);

@@ -24,12 +24,6 @@ const subSurviceSchema = new mongoose.Schema({
         require: false
 
     },
-    services: {
-        type: [{
-            type: mongoose.Schema.ObjectId,
-            ref: 'Service'
-        }]
-    },
     time: {
         type: Number,
         min: [1, 'At least 1 minute!'],

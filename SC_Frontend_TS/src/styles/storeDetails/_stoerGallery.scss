@@ -14,7 +14,7 @@
     padding-inline: 10px;
     user-select: none !important;
     cursor: grab;
-    scroll-behavior: smooth;
+    // scroll-behavior:initial;
 
     @media screen and (max-width: 600px) {
       height: 18rem;

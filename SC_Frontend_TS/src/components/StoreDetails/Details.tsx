@@ -1,4 +1,4 @@
-import { TSingleStore } from "../../pages/Stores";
+import { type TSingleStore } from "../../pages/Stores";
 import SalonDescription from "./Description";
 import Employees from "./Employees";
 import Gallery from "./Gallery";

@@ -1,7 +1,6 @@
-import { useState } from "react";
 import RateStars from "../../UI/RatingStars";
 import { FaScissors, FaPaintbrush } from "react-icons/fa6";
-import ServicesList from "./SingleService";
+import ServicesList from "./SingleServiceList";
 import { SingleServiceT } from "../../../pages/Stores";
 
 
@@ -14,14 +13,12 @@ type ServicesProps = {
 }
 
 export default function Services({services, city, name, address, rating}: ServicesProps){
-    const [selectedService, setSelectedService] = useState<SingleServiceT>(services[0]);
 
     const iconsMapper = {
         'hair': <FaScissors/>,
         'nails': <FaPaintbrush/>,
         'face': <FaPaintbrush/>,
         'body': <FaPaintbrush/>,
-
     }
 
     return (
@@ -49,7 +46,7 @@ export default function Services({services, city, name, address, rating}: Servic
                     )}
                 </div>
             </div>
-            <ServicesList/>
+            <ServicesList services={services}/>
         </div>
     )
 }

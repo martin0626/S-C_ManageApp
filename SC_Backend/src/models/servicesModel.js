@@ -23,7 +23,7 @@ const servicesSchema = new mongoose.Schema({
         maxlength: [100, 'A tour name must have less or equal then 100 characters'],
         minlength: [3, 'A tour name must have more or equal then 3 characters']
     },
-    subSurvices: {
+    subServices: {
         type: [
             {
                 type: mongoose.Schema.ObjectId,
@@ -39,6 +39,16 @@ const servicesSchema = new mongoose.Schema({
     }
 })
 
+
+
+servicesSchema.pre(/^find/, function(next){
+
+    this.populate({
+        path: 'subServices',
+    })
+
+    next()
+})
 
 
 const Service = mongoose.model('Service', servicesSchema);
