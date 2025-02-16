@@ -1,3 +1,4 @@
+const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
 
@@ -10,38 +11,46 @@ exports.getAll = Model => catchAsync(async (req, res)=>{
     res.status(200).json({
         status: 'success',
         results: data.length,
-        data
+        data: data
     })
 })
 
 
-exports.getOne = Model => catchAsync(async (req, res, populate)=>{
+exports.getOne = Model => catchAsync(async (req, res, next)=>{
     const id = req.params.id;
-    const result = await Model.findById(id);
+    const data = await Model.findById(id);
     
+    if(!data){
+        return next(new AppError('There is no ducument with ID: ' + id, 404))
+    };
+
 
     res.status(200).json({
         status: 'success',
-        salon: result,
+        data: data,
     });
 })
 
 exports.createOne = Model => catchAsync(async (req, res)=>{
     const data = req.body; 
-    const newSalon = await Model.create(data);
+    const result = await Model.create(data);
     
 
-    res.status(200).json({
+    res.status(201).json({
         status: 'success',
-        salon: newSalon
+        data: result
     });
 })
 
 
-exports.deleteOne = Model => catchAsync(async (req, res)=>{
+exports.deleteOne = Model => catchAsync(async (req, res, next)=>{
     const id = req.params.id;
 
-    await Model.findByIdAndDelete(id);
+    const data = await Model.findByIdAndDelete(id);
+
+    if(!data){
+        return next(new AppError('There is no ducument with ID: ' + id, 404))
+    };
 
     res.status(200).json({
         status: "Deleted",
@@ -54,13 +63,18 @@ exports.deleteOne = Model => catchAsync(async (req, res)=>{
 exports.updateOne = Model => catchAsync(async (req, res, next)=>{
     const id = req.params.id;
     const body = req.body;
-    const updatedSalon = await Model.findByIdAndUpdate(id, body, {
+    const doc = await Model.findByIdAndUpdate(id, body, {
         new: true,
         runValidators: true
     });
     
+    if(!doc){
+        return next(new AppError('There is no ducument with ID: ' + id, 404))
+    };
+
+
     res.status(200).json({
         status: 'success',
-        updatedSalon,
+        data: doc,
     })
 })
