@@ -73,14 +73,15 @@ exports.deleteOne = Model => catchAsync(async (req, res, next)=>{
 exports.updateOne = Model => catchAsync(async (req, res, next)=>{
     const id = req.params.id;
     const body = req.body;
-    const doc = await Model.findByIdAndUpdate(id, body, {
-        new: true,
-        runValidators: true
-    });
-    
+
+    let doc = await Model.findById(id);
+
     if(!doc){
         return next(new AppError('There is no ducument with ID: ' + id, 404))
     };
+
+    Object.assign(doc, body);
+    await doc.save();
 
 
     res.status(200).json({
