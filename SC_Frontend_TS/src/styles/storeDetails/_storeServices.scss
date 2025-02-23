@@ -4,7 +4,8 @@
 
 .services {
     
-    margin: 1rem 0rem;
+    margin: 8rem 0rem;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -58,22 +59,6 @@
             z-index: 2;
             overflow: hidden;
 
-
-            .sinlge-service-icon{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.6rem;
-                z-index: 3;
-
-                a{
-                    color: #fff;
-                    font-size: 1rem;
-                    letter-spacing: 0.5px;
-
-                }
-            }
-
             &::after{
                 content: "";
                 width: 8rem;
@@ -107,20 +92,7 @@
 }
 
 
-.icon-service {
-    z-index: 3;
-    font-size: 1.5rem;
-    // border: 1px solid #fff;
-    box-shadow: variables.$mainShodwsLight;
-    border-radius: 100%;
-    padding: 1.8rem 2rem;
-    transition: all 1s;
 
-    &:hover{
-        background-color: variables.$actionColor;
-        cursor: pointer;
-    }
-}
 
 
 .active-services {
@@ -264,6 +236,8 @@
             padding: 0.5rem 1rem;
             border-radius: 8px;
             font-weight: bold;
+            width: 7rem;
+
         }
 
         .selection-indicate-active{
@@ -274,6 +248,8 @@
             padding: 0.5rem 1rem;
             border-radius: 8px;
             background-color: variables.$actionColor2;
+            width: 7rem;
+
         }
     }
     .selected-single-service{
@@ -287,3 +263,37 @@
     }
 }
 
+.sinlge-service-icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 3;
+
+    a{
+        color: #fff;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+
+    }
+}
+
+
+.icon-service {
+    z-index: 3;
+    font-size: 1.5rem;
+    // border: 1px solid #fff;
+    box-shadow: variables.$mainShodwsLight;
+    border-radius: 100%;
+    padding: 1.8rem 2rem;
+    transition: all 1s;
+
+    &:hover{
+        background-color: variables.$actionColor;
+        cursor: pointer;
+    }
+}
+
+.activeCat {
+    background-color: variables.$actionColor !important;
+}

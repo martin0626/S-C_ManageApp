@@ -23,7 +23,7 @@ export default function Subservices({subServices}: {subServices: SubServiceT[]})
         })
     }
     
-    debugger
+    
     return (
         <div className="selected-service">
 
@@ -45,7 +45,7 @@ export default function Subservices({subServices}: {subServices: SubServiceT[]})
                                         <p className="selected-service-single-time">30 Мин.</p>
                                     </div>
                                     <p className="selected-service-single-price">30 лв.</p>
-                                    <p className="selection-indicate-inactive">Selected</p>
+                                    <p className="selection-indicate-inactive">Select</p>
                     
                                 </div>
                     }

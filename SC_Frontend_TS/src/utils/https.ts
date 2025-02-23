@@ -17,9 +17,9 @@ const fetchData = async (url: string, signal: AbortSignal)=>{
         throw error;
     }
 
-    const { salons } = await response.json();
+    const { data } = await response.json();
     
-    return salons;
+    return data;
 }
 
 
@@ -35,7 +35,10 @@ export async function fetchSalons({ queries, signal }: {queries: string, signal:
 
 
 export async function fetchSingelSalon({ slug, signal  }: {slug: string, signal: AbortSignal}) {
-    let url = 'http://localhost:3000/salons?slug[eq]=' + slug;
+    let url = 'http://localhost:3000/salons/' + slug;
+    
+    console.log(url);
+    
     
     const result = await fetchData(url, signal);
     return result[0];

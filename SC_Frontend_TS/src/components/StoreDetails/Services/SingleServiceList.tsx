@@ -2,7 +2,7 @@ import { FaChevronRight } from "react-icons/fa6";
 // import SelectedService from "./Subservices";
 import Subservices from "./Subservices";
 import { type SingleServiceT} from '../../../pages/Stores'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -10,7 +10,10 @@ export default function ServicesList({services}: {services: SingleServiceT []}){
 
     const [selectedService, setSelectedService] = useState<SingleServiceT>(services[0]);
 
-    console.log(selectedService);
+
+    useEffect(()=>{
+        setSelectedService(services[0])
+    }, [services])
 
     
     const handleSelect = (service: SingleServiceT)=>{
