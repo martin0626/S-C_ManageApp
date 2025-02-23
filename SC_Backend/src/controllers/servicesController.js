@@ -8,6 +8,6 @@ exports.createService = handlerFactory.createOne(Services);
 
 exports.updateService = handlerFactory.updateOne(Services);
 
-exports.getSingleService = handlerFactory.getOne(Services);
+exports.getSingleService = handlerFactory.getOneById(Services);
 
 // exports.getSingleService = handlerFactory.getOne(Services, [{ path: 'subServices', select: '-__v' }]);

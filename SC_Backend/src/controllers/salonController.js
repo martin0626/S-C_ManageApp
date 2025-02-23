@@ -25,12 +25,30 @@ exports.getAllSalons = catchAsync(async (req, res, next)=>{
     res.status(200).json({
         status: 'success',
         results: salons.length,
-        salons,
+        data: salons,
     });
 })
 
 
-exports.getSingleSalon = handlerFactory.getOne(Salon);
+
+exports.getSingleSalon = catchAsync(async (req, res)=>{
+    let slug = req.params.slug;
+
+
+    let data = await Salon
+        .find({ slug: {$eq: slug}})
+        .populate({
+            path: 'services'
+        });
+
+
+    res.status(200).json({
+        status: 'success', 
+        data: data
+    })
+
+})
+
 
 exports.createSalon = handlerFactory.createOne(Salon);
 

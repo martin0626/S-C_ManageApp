@@ -11,7 +11,7 @@ router
     .post(salonController.createSalon)
 
 router
-    .route('/:id')
+    .route('/:slug')
     .get(salonController.getSingleSalon)
     .patch(salonController.updateSalon)
     .delete(salonController.delteSalon)

@@ -76,19 +76,21 @@ const salonSchema = new mongoose.Schema(
 )
 
 
+salonSchema.index({ slug: 1 }, { unique: true }); 
+
+
 salonSchema.pre('save', function(next){
     this.slug = slugify(this.name, {lower: true});
     next();
 })
 
-salonSchema.pre(/^find/, function(next){
+// salonSchema.pre(/^find/, function(next){
 
-    this.populate({
-        path: 'services',
-    })
-
-    next()
-})
+//     this.populate({
+//         path: 'services',
+//     })
+//     next()
+// })
 
 
 const Salon = mongoose.model('Salon', salonSchema);

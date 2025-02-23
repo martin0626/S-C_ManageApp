@@ -16,7 +16,7 @@ exports.getAll = Model => catchAsync(async (req, res)=>{
 })
 
 
-exports.getOne = (Model, populateProps=[]) => catchAsync(async (req, res, next)=>{
+exports.getOneById = (Model, populateProps=[]) => catchAsync(async (req, res, next)=>{
     const id = req.params.id;
 
     let query = Model.findById(id);

@@ -8,7 +8,7 @@ const handlerFactory = require("./handlerFactory")
 
 exports.getAllSubServices = handlerFactory.getAll(SubService);
 
-exports.getSingleSubService = handlerFactory.getOne(SubService);
+exports.getSingleSubService = handlerFactory.getOneById(SubService);
 
 exports.deleteSubService = handlerFactory.deleteOne(SubService);
 
