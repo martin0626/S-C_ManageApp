@@ -1,6 +1,6 @@
 import { type TSingleStore } from "../../pages/Stores";
 import SalonDescription from "./Description";
-import Employees from "./Employees";
+import Employees from "./Employees/Employees";
 import Gallery from "./Gallery";
 import LocationMap from "./LocationMap";
 import Rating from "./SalonRating";

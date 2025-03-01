@@ -2,6 +2,7 @@
 @use './storeServices';
 @use './storeLocation';
 @use './storeDescription';
+@use './employees';
 
 .storeDetails {
     display: flex;
