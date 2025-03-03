@@ -19,8 +19,9 @@ exports.getAll = Model => catchAsync(async (req, res)=>{
 exports.getOneById = (Model, populateProps=[]) => catchAsync(async (req, res, next)=>{
     const id = req.params.id;
 
-    let query = Model.findById(id);
-
+    let query =  Model.findById(id);
+    
+    
     
     if(populateProps.length > 0){
         populateProps.forEach(prop=>{
@@ -30,6 +31,7 @@ exports.getOneById = (Model, populateProps=[]) => catchAsync(async (req, res, ne
 
     const data = await query;
 
+    
     if(!data){
         return next(new AppError('There is no ducument with ID: ' + id, 404))
     };
