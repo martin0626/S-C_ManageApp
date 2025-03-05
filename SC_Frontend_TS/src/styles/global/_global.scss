@@ -48,3 +48,20 @@
     color: #cfcfcf;
     font-size: 0.9rem;
 }
+
+
+.show-mobile-600{
+    display: none;
+
+    @media screen and (max-width: variables.$breakpoint-small) {
+        display: block;
+    }
+}
+
+.show-bigger-600 {
+    display: block;
+
+    @media screen and (max-width: variables.$breakpoint-small) {
+        display: none;
+    }
+}

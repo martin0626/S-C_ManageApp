@@ -1,6 +1,12 @@
 import Stores from "../components/Stores/Stores";
 
-
+export type EmployeeT = {
+    _id: string,
+    name: string,
+    title: string,
+    reviews: string [],
+    gallery: string []
+}
 
 export type SubServiceT = {
     _id: string,
@@ -31,7 +37,7 @@ export type TSingleStore = {
     slug: string;
     description: string;
     services: SingleServiceT [];
-    employees: string [];
+    employees: EmployeeT [];
     coverImg: string;
     gallery: string [];
     rating: number

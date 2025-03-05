@@ -1,7 +1,12 @@
+import { EmployeeT } from "../../../pages/Stores";
 import RatingStars from "../../UI/RatingStars"
 import EmployeeGallery from "./EmployeeGallery";
 
-export default function EmployeeInfo(){
+type EmployeeInfoPropsT = {
+    employee: EmployeeT
+}
+
+export default function EmployeeInfo({employee}: EmployeeInfoPropsT){
 
 
     return (
@@ -11,11 +16,11 @@ export default function EmployeeInfo(){
                     <p>4.00</p>
                     <RatingStars rate={4} />
                 </div>
-                <p>30 Reviews</p>
+                <p>{employee.reviews.length} Reviews</p>
             </div>
             <div className="emp-info-portfolio">
-                <p>Results Gallery</p>
-                <EmployeeGallery/>
+                <p>{employee.name}'s Results Gallery</p>
+                <EmployeeGallery gallery={employee.gallery}/>
             </div>
         </section>
     )

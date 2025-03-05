@@ -19,7 +19,7 @@ export default function Details({salon}: DetailsProps){
             <LocationMap location={salon.location} name={salon.name} country={salon.country} city={salon.city} />
             <SalonDescription name={salon.name} description={salon.description}/>
             <Rating rating={salon.rating}/>
-            <Employees images={salon.coverImg} />
+            <Employees employees={salon.employees} />
         </section>
     )
 }

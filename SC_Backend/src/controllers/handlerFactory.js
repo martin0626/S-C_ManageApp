@@ -57,7 +57,7 @@ exports.createOne = Model => catchAsync(async (req, res)=>{
 
 exports.deleteOne = Model => catchAsync(async (req, res, next)=>{
     const id = req.params.id;
-
+    
     const data = await Model.findByIdAndDelete(id);
 
     if(!data){

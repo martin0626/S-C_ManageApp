@@ -29,7 +29,10 @@ const salonSchema = new mongoose.Schema(
             }
         },
         employees: {
-            type: [String],
+            type: [{
+                type: mongoose.Schema.ObjectId,
+                ref: "Employee"
+            }],
             required: false,
         },
         coverImg: {

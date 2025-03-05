@@ -39,6 +39,9 @@ exports.getSingleSalon = catchAsync(async (req, res)=>{
         .find({ slug: {$eq: slug}})
         .populate({
             path: 'services'
+        })
+        .populate({
+            path: 'employees'
         });
 
 

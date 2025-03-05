@@ -13,9 +13,11 @@ router
 router
     .route('/:slug')
     .get(salonController.getSingleSalon)
+    
+
+router
+    .route('/:id')
     .patch(salonController.updateSalon)
     .delete(salonController.delteSalon)
-
-
 
 module.exports = router;

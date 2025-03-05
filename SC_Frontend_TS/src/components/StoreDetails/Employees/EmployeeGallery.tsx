@@ -2,7 +2,7 @@ import UiSlider from "../../UI/Slider";
 
 
 
-export default function EmployeeGallery(){
+export default function EmployeeGallery({gallery}: {gallery: string []}){
 
     const settings = {
         dots: false,
@@ -15,20 +15,23 @@ export default function EmployeeGallery(){
 
     return (
         <section className="emp-gallery">
-            <UiSlider settings={settings}>
-                <div>
-                    <img src="https://cdn.shopify.com/s/files/1/0639/1237/8602/files/High_Skin_Fade_Haircut_For_Short_Hair_480x480.jpg?v=1714129170" alt="" />
-                </div>
-                <div>
-                    <img src="https://i.pinimg.com/736x/9c/32/1e/9c321e6305e631e60116f5f08bddba3f.jpg" alt="" />
-                </div>
-                <div>
-                    <img src="https://cdn.shopify.com/s/files/1/0639/1237/8602/files/High_Skin_Fade_Haircut_For_Short_Hair_480x480.jpg?v=1714129170" alt="" />
-                </div>
-                <div>
-                    <img src="https://i.pinimg.com/736x/9c/32/1e/9c321e6305e631e60116f5f08bddba3f.jpg" alt="" />
-                </div>
-            </UiSlider>
+            {
+                gallery.length > 0
+                    ?
+                <UiSlider settings={settings}>
+                    {
+                        gallery.map(i => {
+                            return (
+                                <div>
+                                    <img src={i} alt="Portfolio Image" />
+                                </div>
+                            )
+                        })
+                    }
+                </UiSlider>
+                    :
+                <p>There is no Result Images Yet</p>
+            }
         </section>
     )
 }
