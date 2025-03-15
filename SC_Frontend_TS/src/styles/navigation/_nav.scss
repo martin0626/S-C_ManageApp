@@ -85,9 +85,11 @@
     }
 
     &-open {
+        transition: all 0.5s;
         height: 24rem;
         padding: 2rem;
         opacity: 1 !important;
+        display: flex !important;
     }
 
     &-closed{
@@ -128,7 +130,7 @@
     border-radius: 0px 0px 8px 8px;
     transition: all 0.4s;
     transform: translate(-5%, 100%);
-    display: flex;
+    display: none;
     flex-direction: column;
     text-align: left;
     background-color: #ffff;

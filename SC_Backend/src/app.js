@@ -3,6 +3,8 @@ const app = express();
 
 
 
+// require('dotenv').config({path: './config.env'})
+
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -24,19 +26,18 @@ app.use((req, res, next) => {
 //Routers Imports
 const salonRouter  = require('./routes/salonRouters');
 const servicesRouter = require('./routes/servicesRouter');
-const subServicesRouter = require('./routes/subServicesRouters')
+const subServicesRouter = require('./routes/subServicesRouters');
 const employeeRouter = require('./routes/employeeRouters');
-const reviewsEmpRoter = require('./routes/reviewsEmployeeRouters')
-
+const reviewsEmpRoter = require('./routes/reviewsEmployeeRouters');
+const userRouters = require('./routes/userRouters');
 
 //Routes
 app.use('/salons', salonRouter);
 app.use('/services', servicesRouter);
-app.use('/subServices', subServicesRouter)
-app.use('/employee', employeeRouter)
-app.use('/reviews-employee', reviewsEmpRoter)
-
-
+app.use('/subServices', subServicesRouter);
+app.use('/employee', employeeRouter);
+app.use('/reviews-employee', reviewsEmpRoter);
+app.use('/users', userRouters);
 
 
 //Handle Different Url Exceptions
