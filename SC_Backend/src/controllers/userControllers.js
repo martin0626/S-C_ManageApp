@@ -1,23 +1,6 @@
 const User = require("../models/userModel");
-const { use } = require("../routes/userRouters");
 const catchAsync = require("../utils/catchAsync");
-const jwt = require('jsonwebtoken');
-
-
-
-const createToken = async (id)=>{
-
-    const dummySecret = 'SECRET';
-    const dummyExpireDate = '2d';
-
-    return await jwt.sign({id}, dummySecret, {expiresIn: dummyExpireDate});
-
-
-    //TODO !!
-    // console.log(process.env.JWT_SECRET);
-    
-    // return await jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRATION_DATE});
-}
+const authController = require('./authControllers');
 
 
 exports.signUp = catchAsync( async (req, res)=>{
@@ -31,7 +14,7 @@ exports.signUp = catchAsync( async (req, res)=>{
     }
 
     const newUser = await User.create(userData);
-    const token = await createToken(newUser._id);
+    const token = await authController.createToken(newUser._id);
 
 
     res.status(200).json({
@@ -59,7 +42,7 @@ exports.signIn = catchAsync( async(req, res, next)=>{
     }
 
 
-    const token = await createToken(user._id);
+    const token = await authController.createToken(user._id);
     res.status(200).json({
         status: 'Success',
         token,
