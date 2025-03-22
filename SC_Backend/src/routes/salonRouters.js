@@ -8,7 +8,7 @@ const router = express.Router();
 router
     .route('/')
     .get(salonController.cityFilterParser, salonController.getAllSalons)
-    .post(authController.protect, salonController.createSalon)
+    .post(authController.protect, authController.restrictTo('admin'), salonController.createSalon)
 
 router
     .route('/:slug')

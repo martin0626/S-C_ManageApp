@@ -15,10 +15,13 @@ export default function ServicesList({services}: {services: SingleServiceT []}){
         setSelectedService(services[0])
     }, [services])
 
+
     
+
     const handleSelect = (service: SingleServiceT)=>{
         setSelectedService(service);
-    }
+    };
+
 
     return (
         <div className="services-list">
@@ -27,11 +30,16 @@ export default function ServicesList({services}: {services: SingleServiceT []}){
 
                     {
                         services.map(service=>{
+
+                            if(service.subServices.length === 0){
+                                return
+                            }
+
                             if(service._id === selectedService._id){
                                 return <div key={service.name} className="all-services-list-option">
                                             <li className="service-option li-active">
                                                 <a>
-                                                    <span>Подстригване и прически (4)</span> 
+                                                    <span>{service.name}</span> 
                                                     <span className="service-option-price">From 25 lv.</span>
                                                 </a> 
                                                 <span className="service-arr"><FaChevronRight /></span>
@@ -42,7 +50,7 @@ export default function ServicesList({services}: {services: SingleServiceT []}){
                                 return <div onClick={()=>handleSelect(service)} key={service.name} className="all-services-list-option">
                                             <li className="service-option">
                                                 <a>
-                                                    <span>Подстригване и прически (4)</span> 
+                                                    <span>{service.name}</span> 
                                                     <span className="service-option-price">From 25 lv.</span>
                                                 </a> 
                                                 <span className="service-arr"><FaChevronRight /></span>

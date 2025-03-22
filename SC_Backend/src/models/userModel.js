@@ -14,6 +14,14 @@ const userSchema = new mongoose.Schema({
         unique: true,
         validate: [(el)=> validators.emailValidator(el), "Invalid email address!"]
     },
+    role: {
+        type: String,
+        default: 'user',
+        enum: {
+            values: ['admin', 'user'],
+            message: 'Role for user is not correct!'
+        }
+    },
     password: {
         type: String,
         required: [true, "Missing password!"],
@@ -42,7 +50,6 @@ userSchema.pre('save', async function(next){
     if(!this.isModified('password')) return next();
 
     this.password = await bcrypt.hash(this.password, 12);
-
     this.passwordConfirm = undefined;
     next()
 })
@@ -54,8 +61,6 @@ userSchema.methods.correctPassword = async function (passwordToCheck, password){
 
 
 userSchema.methods.changedPasswordAfter = function(JWTTimeStamp){
-
-
     if(this.passwordChangedAt){
         const formatedTime = parseInt(this.passwordChangedAt.getTime() / 1000, 10)
 

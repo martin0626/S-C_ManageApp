@@ -23,7 +23,6 @@ exports.createToken = async (id)=>{
 
 exports.protect = catchAsync(async(req, res, next)=>{
 
-
     // Check if Token Exist
     let token;
 
@@ -37,15 +36,12 @@ exports.protect = catchAsync(async(req, res, next)=>{
 
     //Check if token is valid
     const decoded = await promisify(jwt.verify)(token, dummySecret)
-
-    console.log(decoded);
     
     const user = await User.findById(decoded.id);
 
     if(!user){
         throw new Error("User does no longer exist!");
     }
-
 
     //Check if password was changed after token was issued
     if(user.changedPasswordAfter(decoded.iat)){
@@ -55,3 +51,17 @@ exports.protect = catchAsync(async(req, res, next)=>{
     req.user = user;
     next();
 })
+
+
+
+exports.restrictTo = (...roles) =>{
+    return catchAsync( async (req, res, next)=>{
+
+        
+        if( !roles.includes(req.user.role) ){
+            throw new Error("This action can't be performed from this user!");
+        }
+
+        next()
+    })
+}

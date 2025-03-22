@@ -46,20 +46,12 @@ export default function Navigation(){
             </div>
             <div className={`navigation-menu ${isOpenMenu ? 'navigation-open' : 'navigation-closed'}`}>
                 <NavLink 
-                    to='login'
+                    to='auth'
                     className={({isActive}: NavigationActive) =>
                         isActive ? "active-menu" : ""
                 } 
                 >
-                    Login
-                </NavLink>
-                <NavLink 
-                    to='register'
-                    className={({isActive}: NavigationActive) =>
-                        isActive ? "active-menu" : ""
-                } 
-                >
-                    Register
+                    My Account
                 </NavLink>
                 <div className="separator"></div>
                 <NavLink 

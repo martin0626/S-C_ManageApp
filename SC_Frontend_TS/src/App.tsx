@@ -3,6 +3,7 @@ import RootPage from "./pages/Root"
 import HomePage from "./pages/Home"
 import StoresPage from "./pages/Stores"
 import StoreDetails from "./pages/StoreDetails"
+import LoginRegisterPage from "./pages/UserAuth"
 
 
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([{
     {
       path: 'stores/:slug',
       element: <StoreDetails/>  
+    },
+    {
+      path: '/auth',
+      element: <LoginRegisterPage/>
     }
   ]
 }])

@@ -35,17 +35,18 @@ exports.signIn = catchAsync( async(req, res, next)=>{
     }
 
     const user = await User.findOne({ email }).select('password');
-    
 
     if(!user || !(await user.correctPassword(password, user.password))) {
         throw new Error("Incorrect Email or Password!")
     }
 
+    const userData = await User.findOne({ email });
 
     const token = await authController.createToken(user._id);
     res.status(200).json({
         status: 'Success',
         token,
+        user: userData,
     })
 })
 
