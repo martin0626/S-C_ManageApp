@@ -20,9 +20,7 @@ exports.createToken = async (id)=>{
 
 
 
-
 exports.protect = catchAsync(async(req, res, next)=>{
-
     // Check if Token Exist
     let token;
 

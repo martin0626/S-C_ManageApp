@@ -10,9 +10,9 @@ export const useSalons = (filters: SalonsSliceStateT) => {
         .join('&');
 
         
-     return useQuery({
-            queryKey: ['salons', {name: queries}],
-            queryFn: ({signal}) => fetchSalons({signal, queries}),
+    return useQuery({
+        queryKey: ['salons', {name: queries}],
+        queryFn: ({signal}) => fetchSalons({signal, queries}),
     });
 
 };

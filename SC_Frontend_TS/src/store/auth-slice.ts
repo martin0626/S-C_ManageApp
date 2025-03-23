@@ -4,22 +4,19 @@ type authSliceT = {
     isLoggedIn: boolean,
     userName: string,
     userEmail: string,
-    userId: string,
 }
 
-const intialAuthState: authSliceT= { isLoggedIn: false, userName: '', userEmail: '', userId: ''};
+const intialAuthState: authSliceT= { isLoggedIn: false, userName: '', userEmail: ''};
 
 
 const authSlice = createSlice({
     name: 'auth',
     initialState: intialAuthState,
     reducers: {
-        login(state) {
+        login(state, action) {
             state.isLoggedIn = true;
-            state.userEmail = 'Asdasd@ads';
-            state.userName = 'Asdasd';
-            state.userId = '11';
-
+            state.userEmail = action.payload.email;
+            state.userName = action.payload.name;
         },
         logout(state) {
             state = intialAuthState;

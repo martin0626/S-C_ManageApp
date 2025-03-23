@@ -52,6 +52,16 @@ exports.signIn = catchAsync( async(req, res, next)=>{
 
 
 
+exports.getSingleUser = catchAsync( async(req, res, next)=> {
+
+    //If there is no user data attached from the middleware
+    if(!req.user) throw new Error("Invalid token!");
+
+    res.status(200).json({
+        status: 'Success',
+        user: req.user,
+    })
+})
 
 
 

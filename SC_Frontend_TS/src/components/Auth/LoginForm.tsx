@@ -3,6 +3,7 @@ import { FormEvent, useState } from "react";
 import { loginUser } from "../../utils/authHttp";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { authActions } from "../../store/auth-slice";
+import { setToken } from "../../utils/jwtSetter";
 
 
 //Controlled Component 
@@ -12,12 +13,12 @@ export default function LoginForm(){
     const [password, setPassword] = useState<string>('');
     const dispatch = useAppDispatch();
 
-    const { mutate, data } = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () => loginUser(email, password),
         onSettled: (data) => {
-            console.log('onSettled:', data);
-            dispatch(authActions.login())
-          },
+            dispatch(authActions.login(data.user))
+            setToken(data.token);
+        },
     })
 
 
