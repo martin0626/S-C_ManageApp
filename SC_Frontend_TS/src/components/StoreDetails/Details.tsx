@@ -18,7 +18,7 @@ export default function Details({salon}: DetailsProps){
             <Services services={salon.services} city={salon.city} address={'.к. Младост 4, бл. 408, вход откъм ул Петър Джидров'} name={salon.name} rating={salon.rating}/>
             <LocationMap location={salon.location} name={salon.name} country={salon.country} city={salon.city} />
             <SalonDescription name={salon.name} description={salon.description}/>
-            <Rating rating={salon.rating}/>
+            {salon.reviews.length > 0 && <Rating reviews={salon.reviews}/>}
             <Employees employees={salon.employees} />
         </section>
     )

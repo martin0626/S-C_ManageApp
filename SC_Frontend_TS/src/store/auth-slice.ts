@@ -19,7 +19,9 @@ const authSlice = createSlice({
             state.userName = action.payload.name;
         },
         logout(state) {
-            state = intialAuthState;
+            state.userName = '';
+            state.userEmail = '';
+            state.isLoggedIn = false;
         }
     }
 })

@@ -74,6 +74,14 @@ const salonSchema = new mongoose.Schema(
                 },
                 message: 'Must have at least one service!'
             }
+        },
+        reviews: {
+            type: [
+                {
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'salonReviews',
+                }
+            ]
         }
     }
 )

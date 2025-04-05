@@ -1,5 +1,12 @@
 import Stores from "../components/Stores/Stores";
 
+
+export type SalonReviewsT = {
+    rating: number,
+    comment: string,
+    image: string | ''
+}
+
 export type EmployeeT = {
     _id: string,
     name: string,
@@ -38,6 +45,7 @@ export type TSingleStore = {
     description: string;
     services: SingleServiceT [];
     employees: EmployeeT [];
+    reviews: SalonReviewsT[],
     coverImg: string;
     gallery: string [];
     rating: number

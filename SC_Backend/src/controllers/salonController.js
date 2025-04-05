@@ -42,8 +42,10 @@ exports.getSingleSalon = catchAsync(async (req, res)=>{
         })
         .populate({
             path: 'employees'
-        });
-
+        })
+        .populate({
+            path: 'reviews'
+        })
 
     res.status(200).json({
         status: 'success', 

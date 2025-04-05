@@ -25,6 +25,8 @@ app.use((req, res, next) => {
 
 //Routers Imports
 const salonRouter  = require('./routes/salonRouters');
+const salonReviewsRouter = require('./routes/salonReviews');
+
 const servicesRouter = require('./routes/servicesRouter');
 const subServicesRouter = require('./routes/subServicesRouters');
 const employeeRouter = require('./routes/employeeRouters');
@@ -33,6 +35,7 @@ const userRouters = require('./routes/userRouters');
 
 //Routes
 app.use('/salons', salonRouter);
+app.use('/salonReviews', salonReviewsRouter);
 app.use('/services', servicesRouter);
 app.use('/subServices', subServicesRouter);
 app.use('/employee', employeeRouter);

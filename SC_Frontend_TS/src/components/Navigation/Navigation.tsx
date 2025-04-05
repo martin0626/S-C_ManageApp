@@ -1,8 +1,10 @@
 import { NavLink } from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
-import { useState } from "react";
-import { useAppSelector } from "../../hooks/reduxHooks";
-import store from "../../store";
+import { useEffect, useRef, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { authActions } from "../../store/auth-slice";
+import { clearToken } from "../../utils/jwtSetter";
+import { Link } from "react-router";
 
 
 type NavigationActive = {isActive: boolean};
@@ -10,15 +12,41 @@ type NavigationActive = {isActive: boolean};
 
 export default function Navigation(){
     const [isOpenMenu, setIsOpenMenu] = useState(false);
+    const {userName, isLoggedIn} = useAppSelector(state => state.auth);
+    const dispatch = useAppDispatch();
 
     const handleOpenMenu = ()=>{
         setIsOpenMenu(!isOpenMenu);        
     }
 
-    const {userName, isLoggedIn} = useAppSelector(state => state.auth);
+    const handleLogout = ()=>{
+        clearToken();
+        dispatch(authActions.logout());
+    }
+
+
+
+    //Handle close on click outside of Nav
+    const navRef = useRef<HTMLDivElement>(null);
+
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
+                setIsOpenMenu(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+
 
     return (
-        <nav className="navigation">
+        <nav ref={navRef} className="navigation">
             {isLoggedIn && <h2>Hi {userName}</h2>}
             <div className="navigation-logo">
                 <span>
@@ -46,14 +74,29 @@ export default function Navigation(){
                 <FaAlignJustify onClick={handleOpenMenu} />
             </div>
             <div className={`navigation-menu ${isOpenMenu ? 'navigation-open' : 'navigation-closed'}`}>
-                <NavLink 
-                    to='auth'
-                    className={({isActive}: NavigationActive) =>
-                        isActive ? "active-menu" : ""
-                } 
-                >
-                    My Account
-                </NavLink>
+                {
+                    !isLoggedIn && 
+                        <>
+                            <NavLink 
+                                to='auth'
+                                className={({isActive}: NavigationActive) =>
+                                isActive ? "active-menu" : ""
+                            }>
+                                Register
+                            </NavLink>
+                        </>
+                }
+                {
+                    isLoggedIn && 
+                        <NavLink 
+                            to='auth'
+                            className={({isActive}: NavigationActive) =>
+                                isActive ? "active-menu" : ""
+                            } 
+                        >
+                            My Account
+                        </NavLink>
+                }
                 <div className="separator"></div>
                 <NavLink 
                     to='/'
@@ -71,6 +114,12 @@ export default function Navigation(){
                 >
                     Stores
                 </NavLink>
+                {
+                    isLoggedIn && 
+                        <Link onClick={handleLogout} to='/'>
+                            Logut
+                        </Link>
+                }
             </div>
         </nav>
     )
