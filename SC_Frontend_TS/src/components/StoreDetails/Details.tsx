@@ -15,7 +15,7 @@ export default function Details({salon}: DetailsProps){
     return (
         <section className="storeDetails">
             <Gallery images={salon.gallery}/>
-            <Services services={salon.services} city={salon.city} address={'.к. Младост 4, бл. 408, вход откъм ул Петър Джидров'} name={salon.name} rating={salon.rating}/>
+            <Services services={salon.services} city={salon.city} address={'.к. Младост 4, бл. 408, вход откъм ул Петър Джидров'} name={salon.name} rating={salon.averageRating}/>
             <LocationMap location={salon.location} name={salon.name} country={salon.country} city={salon.city} />
             <SalonDescription name={salon.name} description={salon.description}/>
             {salon.reviews.length > 0 && <Rating reviews={salon.reviews}/>}

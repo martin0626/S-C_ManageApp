@@ -2,6 +2,7 @@ import Stores from "../components/Stores/Stores";
 
 
 export type SalonReviewsT = {
+    name: string,
     rating: number,
     comment: string,
     image: string | ''
@@ -52,6 +53,7 @@ export type TSingleStore = {
     city: string;
     country: string;
     location: string;
+    averageRating: string;
 }
 
 

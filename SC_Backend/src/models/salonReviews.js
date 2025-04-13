@@ -4,6 +4,11 @@ const mongoose = require('mongoose');
 
 const salonReviewSchema = new mongoose.Schema(
     {
+        name: {
+            type: String,
+            require: true,
+            minLength: 2,
+        },
         rating: {
             type: Number,
             min: [1.00, "Can't be given rate below 1.00!"],

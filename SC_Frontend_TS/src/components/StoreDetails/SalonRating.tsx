@@ -29,7 +29,7 @@ export default function Rating({reviews}: {reviews: SalonReviewsT []}){
                                             </div>
                                         </div>
                                         <div className="card-content-text">
-                                            <h4><span style={{color: '#ffffffa8', fontSize: '0.9rem'}}>Name:</span>John Smith</h4>
+                                            <h4><span style={{color: '#ffffffa8', fontSize: '0.9rem'}}>Name:</span> {review.name}</h4>
                                             <p>
                                                 {review.comment}
                                             </p>
@@ -43,7 +43,7 @@ export default function Rating({reviews}: {reviews: SalonReviewsT []}){
             </div>
     )
 }
-<article className="slide-card">
+{/* <article className="slide-card">
     <div className="card-content">
         <div className="card-content-profile">
             <RateStars rate={3}/>
@@ -61,4 +61,4 @@ export default function Rating({reviews}: {reviews: SalonReviewsT []}){
             </p>
         </div>
     </div>
-</article>
+</article> */}

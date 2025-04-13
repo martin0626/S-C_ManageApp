@@ -13,7 +13,7 @@ type ServicesProps = {
     city: string; 
     name: string; 
     address: string; 
-    rating: number;
+    rating: string;
 }
 
 export default function Services({services, city, name, address, rating}: ServicesProps){
@@ -41,8 +41,8 @@ export default function Services({services, city, name, address, rating}: Servic
                     <p>{city}, {address}</p>
                 </div>
                 <div className="services-header-rate">
-                    <p>{rating.toFixed(1)}</p>
-                    <RateStars rate={rating}/>
+                    <p>{Number(rating).toFixed(1)}</p>
+                    <RateStars rate={Number(rating)}/>
                 </div>
             </div>
             <div className="services-main">

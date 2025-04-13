@@ -95,6 +95,21 @@ salonSchema.pre('save', function(next){
     next();
 })
 
+
+// Virtual for averageRating
+salonSchema.virtual('averageRating').get(function () {
+    if (this._averageRating != null) return this._averageRating;
+    return 5.00;
+});
+
+
+
+salonSchema.set('toJSON', { virtuals: true });
+salonSchema.set('toObject', { virtuals: true });
+const Salon = mongoose.model('Salon', salonSchema);
+module.exports = Salon;
+
+
 // salonSchema.pre(/^find/, function(next){
 
 //     this.populate({
@@ -102,7 +117,3 @@ salonSchema.pre('save', function(next){
 //     })
 //     next()
 // })
-
-
-const Salon = mongoose.model('Salon', salonSchema);
-module.exports = Salon;
