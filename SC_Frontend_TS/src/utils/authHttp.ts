@@ -1,25 +1,56 @@
 const BASE_URL = 'http://localhost:3000/users/'
 
-export const loginUser = async (email: string, password: string)=>{
+type loginDataT = {
+    email: string;
+    password: string
+}
 
-    const response = await fetch(BASE_URL + 'signIn', {
+type registerDataT = {
+    name: string;
+    email: string;
+    password: string;
+    passwordConfirm: string;
+}
+
+const authFetch = async(url:string, data: loginDataT | registerDataT)=>{
+    const response = await fetch(url, {
         method: 'POST',
         headers:{
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        })
+        body: JSON.stringify(data)
     });
+
+    return response;
+}
+
+
+export const loginUser = async(data: loginDataT)=>{
+
+    const response = await authFetch(BASE_URL + 'signIn', data);
 
     if(!response.ok){
         throw new Error('Something Went Wrong!')
     }
 
-    const data = await response.json();
+    const responseData = await response.json();
 
-    return data;
+    debugger
+    return responseData;
+}
+
+
+export const registerUser = async (data: registerDataT)=>{
+
+    const response = await authFetch(BASE_URL + 'signUp', data);
+
+    if(!response.ok){
+        throw new Error('Something Went Wrong!')
+    }
+
+    const responseData = await response.json();
+
+    return responseData;
 }
 
 
