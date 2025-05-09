@@ -49,9 +49,9 @@ exports.getSingleSalon = catchAsync(async (req, res)=>{
             path: 'reviews'
         })
     
-    data[0]._averageRating = (data[0].reviews.reduce((acc, reveiw)=>{
+    data[0]._averageRating = data[0].reviews.length > 0 ? (data[0].reviews.reduce((acc, reveiw)=>{
         return reveiw.rating + acc;
-    }, 0) / data[0].reviews.length).toFixed(2);
+    }, 0) / data[0].reviews.length).toFixed(2) : 0;
 
     
 

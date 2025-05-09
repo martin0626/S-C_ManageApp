@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { type SubServiceT } from "../../../pages/Stores";
+import { useAppSelector } from "../../../hooks/reduxHooks";
 
 export default function Subservices({subServices}: {subServices: SubServiceT[]}){
 
     //TODO Make this state Global
     const [selectedSubServ, setSelectedSubServ] = useState<string[]>([]);
+    const services = useAppSelector(state => state.services.selectedServices);
 
+    console.log(services);
+    
 
     useEffect(()=>{
         setSelectedSubServ([]);
