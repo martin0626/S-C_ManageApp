@@ -10,7 +10,7 @@ const store = configureStore({
         salons: salonsSlice.reducer,
         auth: authSlice.reducer,
         services: servicesSlice.reducer,
-    }
+    },
 })
 
 

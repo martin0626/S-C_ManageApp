@@ -6,6 +6,7 @@ import StoreDetails from "./pages/StoreDetails"
 import LoginRegisterPage from "./pages/UserAuth"
 import { clearToken, getToken } from "./utils/jwtSetter"
 import useLoginUser from "./hooks/useLogin"
+import { StateSyncer } from "./store/StateSyncer"
 
 
 
@@ -36,7 +37,7 @@ const router = createBrowserRouter([{
 function App() {
 
 
-  //Check if user is currently login when app start
+  //Check if user is currently login when app starts
   let loginData;
   const token = getToken()
   if(token){
@@ -48,7 +49,11 @@ function App() {
   }
 
   return (
+    <>
+      <StateSyncer/>
       <RouterProvider router={router}></RouterProvider>
+    
+    </>
   )
 }
 

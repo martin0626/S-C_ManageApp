@@ -30,11 +30,9 @@ export default function ServicesList({services}: {services: SingleServiceT []}){
 
                     {
                         services.map(service=>{
-
                             if(service.subServices.length === 0){
                                 return
                             }
-
                             if(service._id === selectedService._id){
                                 return <div key={service.name} className="all-services-list-option">
                                             <li className="service-option li-active">

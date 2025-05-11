@@ -1,40 +1,31 @@
 import { useEffect, useState } from "react";
 import { type SubServiceT } from "../../../pages/Stores";
-import { useAppSelector } from "../../../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { servicesActions } from "../../../store/services-slice";
+import { useLocation } from "react-router";
 
 export default function Subservices({subServices}: {subServices: SubServiceT[]}){
-
-    //TODO Make this state Global
-    const [selectedSubServ, setSelectedSubServ] = useState<string[]>([]);
     const services = useAppSelector(state => state.services.selectedServices);
+    const location = useLocation();
+    let currentSalon: string = location.pathname.split('/')[location.pathname.split('/').length - 1];
 
-    console.log(services);
-    
-
-    useEffect(()=>{
-        setSelectedSubServ([]);
-    }, [subServices]);
-
+    const dispatch = useAppDispatch();
 
     const handleAction = (id: string)=>{
-        setSelectedSubServ((prevSelected: string[]): string[] => {
-            let updatedList = [...prevSelected];
+        let currentService = {salon: currentSalon, id: id}
 
-            if(updatedList.includes(id)){
-                updatedList = updatedList.filter(el=> el != id);
-            }else {
-                updatedList.push(id);
-            }
-
-            return updatedList
-        })
+        if(services[currentSalon]?.indexOf(id) >= 0){
+            dispatch(servicesActions.removeService(currentService))
+        }else{
+            dispatch(servicesActions.setServices(currentService))            
+        }
     }
     
     return (
         <div className="selected-service">
             {
                 subServices.map(subServ => {
-                    let isSelected = selectedSubServ.includes(subServ._id);
+                    let isSelected = services[currentSalon] ? services[currentSalon].includes(subServ._id) : false;
                     return (
                         <div key={subServ._id} onClick={()=> handleAction(subServ._id)} className={`selected-service-single ${isSelected && "selected-single-service"}`}>
                             <div className="selected-service-single-info">
