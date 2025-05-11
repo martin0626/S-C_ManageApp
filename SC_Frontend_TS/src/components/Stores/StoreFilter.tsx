@@ -12,13 +12,11 @@ export default function FilterStores(){
     const [selectedInput, setSelectedInput] = useState(false);
     const dispatch = useAppDispatch();
     const searchRef = useRef<HTMLInputElement>(null);
-    const filters = useAppSelector((state)=> state.salons.filters);
-    
+    const filters = useAppSelector((state)=> state.salons.filters);    
 
-
-    const handleSelectFilter = (filterName: string)=>{
+    const handleSelectFilter = (filterName: 'city' | 'service' | 'sort')=>{
         dispatch(uiActions.openMenu({comp: filterName}));
-    }
+    };
 
 
     const inputFocus = (e: FocusEvent< HTMLInputElement >)=>{
@@ -86,5 +84,7 @@ export default function FilterStores(){
                 </div>
             </div>
         </div>
+
+        
     )
 }

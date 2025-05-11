@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { authActions } from "../../store/auth-slice";
 import { clearToken } from "../../utils/jwtSetter";
 import { Link } from "react-router";
+import { uiActions } from "../../store/ui-slice";
+
 
 
 type NavigationActive = {isActive: boolean};
@@ -12,7 +14,7 @@ type NavigationActive = {isActive: boolean};
 
 export default function Navigation(){
     const [isOpenMenu, setIsOpenMenu] = useState(false);
-    const {userName, isLoggedIn} = useAppSelector(state => state.auth);
+    const {isLoggedIn} = useAppSelector(state => state.auth);
     const dispatch = useAppDispatch();
 
     const handleOpenMenu = ()=>{
@@ -24,6 +26,9 @@ export default function Navigation(){
         dispatch(authActions.logout());
     }
 
+    const handleAppointments = ()=>{
+        dispatch(uiActions.openMenu({comp: 'appoints'}))
+    }
 
 
     //Handle close on click outside of Nav
@@ -47,13 +52,14 @@ export default function Navigation(){
 
     return (
         <nav ref={navRef} className="navigation">
-            {isLoggedIn && <h2>Hi {userName}</h2>}
+            {/* {isLoggedIn && <h2>Hi {userName}</h2>} */}
             <div className="navigation-logo">
                 <span>
                     <img src="https://t3.ftcdn.net/jpg/02/45/84/16/360_F_245841615_d7QzRv937jfiC176rmKK60ckNXU9V76z.jpg" alt="" />
                 </span>
             </div>
             <div className="navigation-links">
+                
                 <NavLink 
                     to='/'
                     className={({isActive}: NavigationActive ) =>
@@ -70,7 +76,6 @@ export default function Navigation(){
                 >
                     Stores
                 </NavLink>
-                
                 <FaAlignJustify onClick={handleOpenMenu} />
             </div>
             <div className={`navigation-menu ${isOpenMenu ? 'navigation-open' : 'navigation-closed'}`}>
@@ -98,6 +103,10 @@ export default function Navigation(){
                         </NavLink>
                 }
                 <div className="separator"></div>
+                
+                <a onClick={handleAppointments}>
+                    Appointments
+                </a>
                 <NavLink 
                     to='/'
                     className={({isActive}: NavigationActive) =>
