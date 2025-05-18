@@ -12,4 +12,8 @@ router.route('/:id')
     .patch(subServicesController.updateSubService)
 
 
+router.route('/serviceBySalon/:slug')
+    .post(subServicesController.getSubServiceBySalon)
+
+
 module.exports = router;

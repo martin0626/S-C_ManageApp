@@ -38,6 +38,10 @@ const servicesSlice = createSlice({
         removeService(state, action){
             if(state.selectedServices[action.payload.salon]){
                 state.selectedServices[action.payload.salon] = state.selectedServices[action.payload.salon].filter(e => e != action.payload.id);
+
+                if(state.selectedServices[action.payload.salon].length === 0){
+                  delete state.selectedServices[action.payload.salon]
+                }
             }
         },
         resetServices(state) {

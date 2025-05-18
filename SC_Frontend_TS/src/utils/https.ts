@@ -45,6 +45,10 @@ export async function fetchSingelSalon({ slug, signal  }: {slug: string, signal:
 };
 
 
-// export async function filterSalons({signal}) {
-    
-// }
+export async function fetchServices({signal, id}: {signal: AbortSignal, id: string}) {
+
+    const url = 'http://localhost:3000/salons/' + id;
+
+    const result = await fetchData(url, signal);
+    return result[0];
+}
