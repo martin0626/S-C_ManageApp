@@ -16,15 +16,20 @@ export default function AuthMain(){
 
     return (
         <article className="auth-main">
-            <button onClick={handleChangeToRegister}>Register</button>
-            <button onClick={handleChangeToLogin}>Login</button>
-            {
-                authType == 'register' 
-                    ?
-                        <RegisterForm />
-                    :
-                        <LoginForm />
-            }
+            <div className="auth-controller">
+                <p onClick={handleChangeToRegister} className={`auth-controller-left ${authType === 'register' && 'active-controller'}`}>Sign Up</p>
+                <p onClick={handleChangeToLogin} className={`auth-controller-right ${authType === 'login' && 'active-controller'}`}>Sign In</p>
+            </div>
+            
+            {/* <button onClick={handleChangeToRegister}>Register</button>
+            <button onClick={handleChangeToLogin}>Login</button> */}
+
+            <div className={authType === 'register' ? 'visibleRegister' : 'invisibleRegister'}>
+                <RegisterForm />
+            </div>
+            <div className={authType === 'login' ? 'visibleLogin' : 'invisibleLogin'} >
+                <LoginForm />
+            </div>
         </article>
     )
 }

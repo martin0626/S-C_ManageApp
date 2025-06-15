@@ -28,12 +28,19 @@ export default function LoginForm(){
         mutate();
     };
 
+    // const handleBlur = (e: React.FocusEvent<HTMLInputElement>)=>{
+    //     if(){
+
+    //     }
+        
+    // }
+
     return (
         <div className="auth-container">
-            <h2>Login</h2>
+            <h2>Sign In</h2>
             <form className="form-auth" onSubmit={handleSubmit}>
                 <div className="form-auth-group">
-                    <label className={ selectedInput === 'email' ? 'selectedInputLabel' : '' } htmlFor="username">Email</label>
+                    <label className={ (selectedInput === 'email' || email != '') ? 'selectedInputLabel' : '' } htmlFor="username">Email</label>
                     <input
                         type="email"
                         id="email"
@@ -41,20 +48,22 @@ export default function LoginForm(){
                         required
                         onFocus={(e)=> setSelectedInput(e.target.id)}
                         onBlur={()=> setSelectedInput('')}
+                        className={ (selectedInput === 'email' || email != '') ? 'selectedInput' : '' }
                     />
                 </div>
                 <div className="form-auth-group">
-                    <label className={ selectedInput === 'password' ? 'selectedInputLabel' : '' } htmlFor="password">Password</label>
+                    <label className={ (selectedInput === 'password' || password != '') ? 'selectedInputLabel' : '' } htmlFor="password">Password</label>
                     <input
                         type="password"
                         id="password"
                         onChange={(e) => setPassword(e.target.value)}
                         onFocus={(e)=> setSelectedInput(e.target.id)}
                         onBlur={()=> setSelectedInput('')}
+                        className={ (selectedInput === 'password' || password != '') ? 'selectedInput' : '' }
                         required
                     />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit">Sign In</button>
             </form>
         </div>
     )

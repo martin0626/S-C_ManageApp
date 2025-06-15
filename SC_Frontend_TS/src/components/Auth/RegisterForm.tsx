@@ -29,10 +29,10 @@ export default function RegisterForm(){
     
     return (
             <div className="auth-container">
-                <h2>Register</h2>
+                <h2>Sign Up</h2>
                 <form className="form-auth" onSubmit={handleSubmit}>
                     <div className="form-auth-group">
-                        <label className={ selectedInput === 'email' ? 'selectedInputLabel' : '' } htmlFor="username">Email</label>
+                        <label className={ (selectedInput === 'email' || email != '') ? 'selectedInputLabel' : '' } htmlFor="username">Email</label>
                         <input
                             type="email"
                             id="email"
@@ -40,20 +40,22 @@ export default function RegisterForm(){
                             onChange={(e) => setEmail(e.target.value)}
                             onFocus={(e)=> setSelectedInput(e.target.id)}
                             onBlur={()=> setSelectedInput('')}
+                            className={ (selectedInput === 'email' || email != '') ? 'selectedInput' : '' }
                         />
                     </div>
                     <div className="form-auth-group">
-                        <label className={ selectedInput === 'username' ? 'selectedInputLabel' : '' } htmlFor="username">Username</label>
+                        <label className={ (selectedInput === 'username' || name != '') ? 'selectedInputLabel' : '' } htmlFor="username">Username</label>
                         <input
                             id="username"
                             onChange={(e) => setName(e.target.value)}
                             required
                             onFocus={(e)=> setSelectedInput(e.target.id)}
                             onBlur={()=> setSelectedInput('')}
+                            className={ (selectedInput === 'username' || name != '') ? 'selectedInput' : '' }
                         />
                     </div>
                     <div className="form-auth-group">
-                        <label className={ selectedInput === 'password' ? 'selectedInputLabel' : '' } htmlFor="password">Password</label>
+                        <label className={ (selectedInput === 'password' || password != '') ? 'selectedInputLabel' : '' } htmlFor="password">Password</label>
                         <input
                             type="password"
                             id="password"
@@ -61,10 +63,11 @@ export default function RegisterForm(){
                             required
                             onFocus={(e)=> setSelectedInput(e.target.id)}
                             onBlur={()=> setSelectedInput('')}
+                            className={ (selectedInput === 'password' || password != '') ? 'selectedInput' : '' }
                         />
                     </div>
                     <div className="form-auth-group">
-                        <label className={ selectedInput === 're-password' ? 'selectedInputLabel' : '' } htmlFor="re-password">Confirm Password</label>
+                        <label className={ (selectedInput === 're-password' || repeatPass != '') ? 'selectedInputLabel' : '' } htmlFor="re-password">Confirm Password</label>
                         <input
                             type="password"
                             id="re-password"
@@ -72,9 +75,10 @@ export default function RegisterForm(){
                             required
                             onFocus={(e)=> setSelectedInput(e.target.id)}
                             onBlur={()=> setSelectedInput('')}
+                            className={ (selectedInput === 're-password' || repeatPass != '') ? 'selectedInput' : '' }
                         />
                     </div>
-                    <button type="submit">Register</button>
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
     )
