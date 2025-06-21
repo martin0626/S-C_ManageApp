@@ -12,7 +12,7 @@
 @use 'UI/rating';
 @use 'UI/popUp';
 @use 'UI/slider';
-
+@use 'UI/errorForm';
 
 
 //Navigation
@@ -56,8 +56,15 @@ li {
 }
 
 html {
+
+     background-image:
+        linear-gradient(rgb(252, 252, 252), rgba(255, 255, 255, 0.582)),
+        url('https://static.vecteezy.com/system/resources/thumbnails/048/838/522/small_2x/barbershop-blurred-background-hairdresser-and-hair-salon-photo.jpeg');
+    background-size: cover;
+    background-position: center;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    mask-repeat: no-repeat;
 
     @media screen and (max-width: variables.$breakpoint-medium) {
       font-size: 80%;
@@ -80,6 +87,9 @@ a {
   text-decoration: none;
 }
 
+.main-section {
+  min-height: 100vh;
+}
 
 //ScrollBar
 

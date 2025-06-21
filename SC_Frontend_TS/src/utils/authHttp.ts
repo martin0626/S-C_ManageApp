@@ -30,12 +30,13 @@ export const loginUser = async(data: loginDataT)=>{
     const response = await authFetch(BASE_URL + 'signIn', data);
 
     if(!response.ok){
-        throw new Error('Something Went Wrong!')
+        const errorBody = await response.json();
+        throw new Error(errorBody.message || 'Something went wrong');
     }
 
     const responseData = await response.json();
 
-    debugger
+    
     return responseData;
 }
 
@@ -45,11 +46,10 @@ export const registerUser = async (data: registerDataT)=>{
     const response = await authFetch(BASE_URL + 'signUp', data);
 
     if(!response.ok){
-        throw new Error('Something Went Wrong!')
+        const errorBody = await response.json();
+        throw new Error(errorBody.message || 'Something went wrong');
     }
-
     const responseData = await response.json();
-
     return responseData;
 }
 

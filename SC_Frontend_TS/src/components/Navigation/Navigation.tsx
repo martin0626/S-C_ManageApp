@@ -24,10 +24,12 @@ export default function Navigation(){
     const handleLogout = ()=>{
         clearToken();
         dispatch(authActions.logout());
+        setIsOpenMenu(false)
     }
 
     const handleAppointments = ()=>{
         dispatch(uiActions.openMenu({comp: 'appoints'}))
+        setIsOpenMenu(false)
     }
 
 
@@ -64,7 +66,8 @@ export default function Navigation(){
                     to='/'
                     className={({isActive}: NavigationActive ) =>
                         isActive ? "active not-mobile" : "not-mobile"
-                } 
+                    } 
+                    onClick={()=> setIsOpenMenu(false)}
                 >
                     Home
                 </NavLink>
@@ -73,21 +76,49 @@ export default function Navigation(){
                     className={({isActive}: NavigationActive) =>
                         isActive ? "active not-mobile" : "not-mobile"
                 } 
+                    onClick={()=> setIsOpenMenu(false)}
                 >
                     Stores
                 </NavLink>
                 <FaAlignJustify onClick={handleOpenMenu} />
             </div>
             <div className={`navigation-menu ${isOpenMenu ? 'navigation-open' : 'navigation-closed'}`}>
+                <NavLink 
+                    to='/'
+                    className={({isActive}: NavigationActive) =>
+                        isActive ? "active-menu only-mobile" : "only-mobile"
+                    } 
+                    onClick={()=> setIsOpenMenu(false)}
+                >
+                    Home
+                </NavLink>
+                <NavLink 
+                    to='stores'
+                    className={({isActive}: NavigationActive) =>
+                        isActive ? "active-menu only-mobile" : "only-mobile"
+                    } 
+                    onClick={()=> setIsOpenMenu(false)}
+                >
+                    Stores
+                </NavLink>
+                
+                <a onClick={handleAppointments}>
+                    Appointments
+                </a>
+
+                <div className="separator"></div>
+
                 {
                     !isLoggedIn && 
                         <>
                             <NavLink 
                                 to='auth'
                                 className={({isActive}: NavigationActive) =>
-                                isActive ? "active-menu" : ""
-                            }>
-                                Register
+                                    isActive ? "active-menu" : ""
+                                }
+                                onClick={()=> setIsOpenMenu(false)}
+                            >
+                                Sign Up
                             </NavLink>
                         </>
                 }
@@ -98,35 +129,18 @@ export default function Navigation(){
                             className={({isActive}: NavigationActive) =>
                                 isActive ? "active-menu" : ""
                             } 
+                            onClick={()=> setIsOpenMenu(false)}
                         >
                             My Account
                         </NavLink>
                 }
-                <div className="separator"></div>
                 
-                <a onClick={handleAppointments}>
-                    Appointments
-                </a>
-                <NavLink 
-                    to='/'
-                    className={({isActive}: NavigationActive) =>
-                        isActive ? "active-menu only-mobile" : "only-mobile"
-                } 
-                >
-                    Home
-                </NavLink>
-                <NavLink 
-                    to='stores'
-                    className={({isActive}: NavigationActive) =>
-                        isActive ? "active-menu only-mobile" : "only-mobile"
-                } 
-                >
-                    Stores
-                </NavLink>
+                
+                
                 {
                     isLoggedIn && 
                         <Link onClick={handleLogout} to='/'>
-                            Logut
+                            Sign Out
                         </Link>
                 }
             </div>

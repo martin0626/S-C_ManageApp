@@ -47,7 +47,7 @@ export default function AppointmentsComp(){
     return (
         <div>
             { data.length > 0 ? data.map(e => {
-                return <h2>{e.services[1].name}</h2>
+                return <h2>{e.services[0].name}</h2>
             }) : <h1>No Selected Services Yet</h1>}
             <button onClick={handleClear}>Clear</button>
         </div>

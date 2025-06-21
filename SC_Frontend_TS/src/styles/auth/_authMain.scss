@@ -6,24 +6,14 @@
     overflow: hidden;
     position: relative;
     max-width: 50%;
-    height: 42rem;
+    height: 52rem;
     border-radius: 8px;
     margin: 0 auto;
     margin-top: 12rem;
     margin-bottom: 12rem;
     padding: 4rem;
     box-shadow: variables.$mainShodws;
-    
-    background-image:
-        linear-gradient(rgb(252, 252, 252), rgba(255, 255, 255, 0.582)),
-        url('https://static.vecteezy.com/system/resources/thumbnails/048/838/522/small_2x/barbershop-blurred-background-hairdresser-and-hair-salon-photo.jpeg');
-    background-size: cover;
-    background-position: center;
-
-    // background-image: url('https://t4.ftcdn.net/jpg/07/88/37/65/360_F_788376540_57CUrVW1k0LA2Lp6lRo9Ydzyj4T3omlv.jpg');
-    // background-size: cover;
-    // background-position: center;
-
+    background-color: #ffffff5d;
    
     @media screen and (max-width: 1000px) {
         max-width: 80%;
@@ -35,7 +25,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 6rem;
+    margin-top: 1rem;
     gap: 0.5rem;
     transition: all 0.5s;
     position: absolute;
@@ -63,7 +53,7 @@
             bottom: 50%;
             left: 5%;
             transform: translateY(50%);
-            color: #ffffffa8;
+            color: #333333be;
             font-size: 1rem;
             font-weight: bold;
             letter-spacing: 1px;
@@ -72,14 +62,16 @@
         }
 
         input{
+            width: 22rem;
+            font-weight: bold;
             border: none;
             border-bottom: 2px solid #333;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 1px;
-            color: #fff;
+            color: #000000;
             padding: 0.5rem;
             border-radius: 4px;
-            background-color: #252525a9;
+            background-color: #2525252f;
         }
     }
 }
@@ -100,22 +92,28 @@
 .visibleRegister{
     transform: translateX(0%);
     transition: all 0.5s;
+    opacity: 1;
+
 }
 
 .invisibleRegister{
     transform: translateX(-100%);
     transition: all 0.5s;
+    opacity: 0;
+
 }
 
 
 .visibleLogin{
     transform: translateX(0%);
     transition: all 0.5s;
+    opacity: 1;
 }
 
 .invisibleLogin{
     transform: translateX(100%);
     transition: all 0.5s;
+    opacity: 0;
 }
 
 
